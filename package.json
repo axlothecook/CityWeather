@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.10",
+    "@react-google-maps/api": "^2.20.7",
+    "@vis.gl/react-google-maps": "^1.5.5",
     "babel-plugin-react-css-modules": "^5.2.6",
+    "dotenv": "^17.2.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-google-autocomplete": "^2.7.5"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.27.1",

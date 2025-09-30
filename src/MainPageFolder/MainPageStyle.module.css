@@ -1,0 +1,257 @@
+.outerWrapper {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapperSelection {
+  composes: wrapper;
+  width: 400vw;
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+}
+
+.wrapperNoSelection {
+  composes: wrapper;
+  width: 100vw;
+  /* border: 3px solid black; */
+}
+
+.slideOne {
+  /* border: 3px solid red; */
+  composes: slide;
+  position: relative;
+  background-color: rgb(114, 114, 180);
+}
+
+.slideTwo {
+  composes: slide;
+  background-color: blue;
+}
+
+.slideThree {
+  composes: slide;
+  background-color: orange;
+}
+
+
+.slideFour {
+  composes: slide;
+  background-color: green;
+}
+
+.divWithSearchBar {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 5px;
+  top: 22rem;
+  left: 15%;
+}
+
+.input {
+  height: 35px;
+  border: 1px solid blue;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 0 10px 0;
+  background-color: rgba(0, 0, 255, 0.589);
+}
+
+.input:focus {
+  border: 1px solid blue;
+}
+
+ul { 
+  list-style-type: none; 
+  border: 3px solid blue;
+  padding: 0;
+  width: fit-content;
+}
+
+li {
+  border: 3px solid black;
+  padding: 10px;
+  background-color: antiquewhite;
+  width: 43rem;
+}
+
+li:hover {
+  background-color: rgba(199, 187, 172, 0.733);
+  cursor: pointer;
+}
+
+
+.autocompleteContainer input,
+.autocompleteControl {
+  box-sizing: border-box;
+}
+
+.autocompleteControl {
+  margin: 24px;
+  background: #fff;
+}
+
+.autocompleteContainer {
+  width: 300px;
+}
+
+.autocompleteContainer input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 18px;
+}
+
+.autocompleteContainer .custom-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autocompleteContainer .custom-list-item {
+  padding: 8px;
+}
+
+.autocompleteContainer .custom-list-item:hover {
+  background: lightgrey;
+  cursor: pointer;
+}
+
+.blobParent {
+  z-index: -1;
+  /* border: 3px solid black; */
+  animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.blob {
+  width: 400px;
+  aspect-ratio: 1/1;
+  border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+  background: linear-gradient(
+    rgba(20, 202, 238, 0.5) 0%,
+    rgba(41, 116, 221, 0.8) 40%,
+    rgba(126, 26, 247, 0.8) 100%
+  );
+  animation: changeShapeBlob 6s linear infinite, rotateBlob 12s linear infinite;
+  filter: blur(50px);
+}
+
+@keyframes rotateBlob {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveBlob {
+  0%,
+  100% {
+    transform: translate(5%, 4vh);
+  }
+  20% {
+    transform: translate(35%, 6vh);
+  }
+  35% {
+    transform: translate(65%, 20vh);
+  }
+  50% {
+    transform: translate(55%, 30vh);
+  }
+  65% {
+    transform: translate(7%, 30vh);
+  }
+  80% {
+    transform: translate(45%, 7vh);
+  }
+}
+
+@keyframes changeShapeBlob {
+  0%,
+  100% {
+    /* border-top-left-radius: 30% 30%;
+    border-top-right-radius: 70% 40%; */
+    border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+    /* border-radius: 30% 70% / 30% 40% ; */
+    /* border-color: yellow; */
+  }
+
+  20% {
+    /* border-top-left-radius: 40% 40%;
+    border-top-right-radius: 65% 35%; */
+    border-radius: 40% 65% 50% 50% / 40% 35% 35% 65%;
+    /* border-radius: 40% 65% / 40% 35% ; */
+    /* border-color: red; */
+  }
+
+  40% {
+    /* border-top-left-radius: 35% 65%;
+    border-top-right-radius: 65% 50%; */
+    border-radius: 35% 65% 65% 35% / 65% 50% 50% 25%;
+    /* border-radius: 35% 65% / 65% 50% ; */
+    /* border-color: purple; */
+  }
+  60% {
+    /* border-top-left-radius: 40% 30%;
+    border-top-right-radius: 65% 30%; */
+    border-radius: 40% 65% 50% 50% / 30% 30% 70% 75%;
+    /* border-radius: 40% 65% / 30% 30%; */
+    /* border-color: blue; */
+  }
+  80% {
+    /* border-top-left-radius: 40% 50%;
+    border-top-right-radius: 60% 50%; */
+    border-radius: 40% 60% 40% 60% / 50% 50% 50% 60%;
+    /* border-radius: 40% 60% / 50% 50%; */
+    /* border-color: green; */
+  }
+}
+
+/* @media (max-width: 1000px) {
+  .blob {
+    width: 300px;
+  }
+
+  @keyframes moveBlob {
+    0%,
+    100% {
+      transform: translate(20%, 10vh);
+    }
+    25% {
+      transform: translate(35%, 30vh);
+    }
+    50% {
+      transform: translate(45%, 40vh);
+    }
+    75% {
+      transform: translate(25%, 50vh);
+    }
+  }
+} */
