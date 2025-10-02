@@ -1,19 +1,30 @@
 import styles from './MainPageStyle.module.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, use } from 'react';
 import ReactGoogleAutocomplete from "react-google-autocomplete";
+import ClearDay from './weatherIconsFolder/Clear_Day/ClearDay';
+import ClearNight from './weatherIconsFolder/Clear_Night/ClearNight';
+import PartialCloudy from './weatherIconsFolder/Partial_Cloudy/PartialCloudy';
+import Windy from './weatherIconsFolder/Wind/Windy';
+import Cloudy from './weatherIconsFolder/Fully_Cloudy/FullyCloudy';
+import Rain from './weatherIconsFolder/Rain/Rain';
+import Thunderstorm from './weatherIconsFolder/Thunderstorm/Thunderstorm';
+import Snow from './weatherIconsFolder/Snow/Snow';
 // import API_KEY from '../../.env';
 //process.env.REACT_APP_GOOGLEMAPS_API_KEY
 // const API_KEY = globalThis.GOOGLE_MAPS_API_KEY;
 const API_KEY = 'AIzaSyBnxOTyLUp6dwVolwpt7T_ll3yEMKWDjXo';
 
 const MainPage = () => {
-    const [currentWeatherData, setCurrentWeatherData] = useState();
+    const [currentWeather, setCurrentWeather] = useState();
     const [dailyForecastData, setDailyForecastData] = useState();
     const [hourlyForecastData, setHourlyForecastData] = useState();
     const [videosArr, setVideosArr] = useState([]);
     const [imagesArr, setImagesArr] = useState([]);
     const [selectedPlace, setSelectedPlace] = useState(false);
+    // let placeRef = useRef(0);
     let countRef = useRef(0);
+    let xCoordRef = useRef(0);
+    let yCoordRef = useRef(0);
 
     function fetchWeatherData(latitute, longitute) {
         fetch(`https://weather.googleapis.com/v1/currentConditions:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}`)
@@ -21,47 +32,47 @@ const MainPage = () => {
         .then((response) => {
             console.log('current weather:');
             console.log(response);
-            // setCurrentWeatherData(response);
+            setCurrentWeather(response);
         })
         .catch((e) => console.log(`Fetch WEather Data Error: ${e}`));
 
-        fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}`)
-        .then((response) => response.json())
-        .then((response) => {
-            console.log('daily forecast:');
-            console.log(response);
-            // setDailyForecastData(response);
-            // if(response.nextPageToken) {
-            //     let temp = response.nextPageToken;
-            //     fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&pageToken=${temp}`)
-            //     .then((response) => response.json())
-            //     .then((response) => {
-            //         console.log('response 2:');
-            //         console.log(response);
-            //     })
-            //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
-            // };
-        })
-        .catch((e) => console.log(`Fetch WEather Data Error: ${e}`));
+        // fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}`)
+        // .then((response) => response.json())
+        // .then((response) => {
+        //     console.log('daily forecast:');
+        //     console.log(response);
+        //     // setDailyForecastData(response);
+        //     // if(response.nextPageToken) {
+        //     //     let temp = response.nextPageToken;
+        //     //     fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&pageToken=${temp}`)
+        //     //     .then((response) => response.json())
+        //     //     .then((response) => {
+        //     //         console.log('response 2:');
+        //     //         console.log(response);
+        //     //     })
+        //     //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
+        //     // };
+        // })
+        // .catch((e) => console.log(`Fetch WEather Data Error: ${e}`));
 
-        fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24`)
-        .then((response) => response.json())
-        .then((response) => {
-            console.log('hourly forecast:');
-            console.log(response);
-            // setHourlyForecastData(response);
-            // if(response.nextPageToken) {
-            //     let temp = response.nextPageToken;
-            //     fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24&pageToken=${temp}`)
-            //     .then((response) => response.json())
-            //     .then((response) => {
-            //         console.log('response 2:');
-            //         console.log(response);
-            //     })
-            //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
-            // };
-        })
-        .catch((e) => console.log(`Fetch Weather Data Error1: ${e}`));
+        // fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24`)
+        // .then((response) => response.json())
+        // .then((response) => {
+        //     console.log('hourly forecast:');
+        //     console.log(response);
+        //     // setHourlyForecastData(response);
+        //     // if(response.nextPageToken) {
+        //     //     let temp = response.nextPageToken;
+        //     //     fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24&pageToken=${temp}`)
+        //     //     .then((response) => response.json())
+        //     //     .then((response) => {
+        //     //         console.log('response 2:');
+        //     //         console.log(response);
+        //     //     })
+        //     //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
+        //     // };
+        // })
+        // .catch((e) => console.log(`Fetch Weather Data Error1: ${e}`));
     };
 
     function fetchImages(placeId) {
@@ -99,6 +110,44 @@ const MainPage = () => {
         .catch((e) => console.log(`Fetch Videos Data Error: ${e}`));
     };
 
+    function setBlob() {
+        var element = document.querySelector('#blobParent');
+        if(element) {
+            var position = element.getBoundingClientRect();
+            console.log(position)
+            xCoordRef.current = position.x;
+            yCoordRef.current = position.y;
+            element.style.position = 'fixed';
+            element.style.zIndex = '5';
+            element.style.transformOrigin = '300px 300px';
+            element.style.left = position.x + 'px';
+            element.style.top = position.y + 'px';
+        };
+    };
+    
+
+    // useEffect(() => {
+    //     function switchTab() {
+    //         // console.log(window)
+    //         var element = document.querySelector('#secondSlideId');
+    //         if(element) {
+    //             console.log(window);
+    //             var position = element.getBoundingClientRect();
+    //             console.log(position);
+    //             console.log(element.scrollLeft)
+    //             // element.style.position = 'scroll'
+    //             // element.style.top = 0;
+    //             // element.style.left = 0;
+    //             // window.pageXOffset = position.left + 'px';
+    //             // window.screenTop = position.top + 'px';
+    //             element.scrollLeft
+    //         };
+    //     };
+
+    //     switchTab()
+
+    // }, [selectedPlace]);
+
     return (
         <div className={selectedPlace ? styles.outerWrapper : ''}>
             <div className={selectedPlace ? styles.wrapperSelection : styles.wrapperNoSelection}>
@@ -110,7 +159,9 @@ const MainPage = () => {
                             apiKey={API_KEY}
                             style={{ width: "90%" }}
                             onPlaceSelected={(place) => {
+                                // setBlob();
                                 setSelectedPlace(true);
+                                // switchTab();
                                 fetchWeatherData(place.geometry.location.lat(), place.geometry.location.lng());
                                 // fetchVideos(place.geometry.location.lat(), place.geometry.location.lng());
                                 // fetchImages(place.place_id);
@@ -120,11 +171,30 @@ const MainPage = () => {
                             }}
                         />
                     </div>
-                    <div className={styles.blobParent}>
-                        <div className={styles.blob}></div>
-                    </div>
+                    {/* <div className={selectedPlace ? styles.blobParentTransition : styles.blobParentNoTransition} id='blobParent'>
+                        <div className={selectedPlace ? styles.blobTransition : styles.blobNoTransition}></div>
+                    </div> */}
                 </div>
-                {selectedPlace && <div className={styles.slideTwo}></div>}
+                {selectedPlace && 
+                <div className={styles.slideTwo} id='secondSlideId'>
+                    <div className={styles.slideTwoChild}>
+
+                        {/* {currentWeather && 
+                        <div>
+                            <img src={currentWeather.weatherCondition.iconBaseUri + (currentWeather.isDaytime ? '.svg' : '_dark.svg')} />
+                        </div>} */}
+
+                        {/* <ClearDay /> */}
+                        {/* <ClearNight /> */}
+                        {/* <PartialCloudy isDay={true} /> */}
+                        {/* <Cloudy /> */}
+                        {/* <Windy /> */}
+                        {/* <Rain /> */}
+                        {/* <Thunderstorm /> */}
+                        {/* <Snow /> */}
+                        
+                    </div>
+                </div>}
                 {selectedPlace && <div className={styles.slideThree}></div>}
                 {selectedPlace && <div className={styles.slideFour}></div>}
             </div>

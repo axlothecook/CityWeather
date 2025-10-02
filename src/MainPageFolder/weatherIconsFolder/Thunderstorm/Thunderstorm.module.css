@@ -1,0 +1,108 @@
+.thunderstorm {
+    position: relative;
+    --scale-fully-cloudy: 0.8;
+}
+
+.thunder_cloud {
+    composes: rain_cloud from '../Rain/Rain.module.css';
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunder_cloud_edition {
+    position: absolute;
+    height: calc(var(--scale-fully-cloudy) * 13rem);
+    width: calc(var(--scale-fully-cloudy) * 13rem);
+    background: #ccc;
+    border-radius: 50%;
+    background-image: radial-gradient(circle, #95a5a6, #7f8c8d);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+    top: calc(var(--scale-fully-cloudy) * (-8.5rem));
+    left: calc(var(--scale-fully-cloudy) * 8.5rem);
+    z-index: 1;
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunder_cloud::before {
+    z-index: 2;
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunder_cloud::after {
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunderboltContainer {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+}
+
+.thunderboltContainer_first {
+    composes: thunderboltContainer;
+    z-index: 0;
+    top: calc(var(--scale-fully-cloudy) * 8rem);
+    left: calc(var(--scale-fully-cloudy) * 5rem);
+}
+
+.thunderboltContainer_second {
+    composes: thunderboltContainer;
+    top: calc(var(--scale-fully-cloudy) * 3rem);
+    left: calc(var(--scale-fully-cloudy) * 20rem);
+}
+
+/* border: 4, bottom: 22px - 18 */
+.thunderbolt {
+  border: 12px solid rgba(0,0,0,0);
+  border-bottom: 39px solid #ffdf00;
+  transform: rotateZ(-160deg);
+  padding: 2px;
+  width: 0;
+  height: 0;
+  margin: 0;
+  overflow: visible;
+  border-top: 0 solid;
+  border-radius: 0;
+  transform-origin: 50% 50% 0;
+  animation: fadeOut 1s linear infinite alternate;
+}
+
+/* border: 5, bottom: 25px - 20 */
+.thunderbolt::after {
+  content: '';
+  top: -9px;
+  left: -8px;
+  border: 10px solid rgba(0,0,0,0); 
+  border-bottom: 39px solid #ffdf00;
+  transform: rotateZ(4deg);
+  padding: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin: 0;
+  overflow: visible;
+  border-top: 0 solid;
+  border-radius: 0;
+  transform-origin: 10rem -6rem 0;
+}
+
+@keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes thunder {
+	0% { box-shadow: 0 0 25px #fff; }
+	2% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	49% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	50% { box-shadow: 0 0 25px #fff; }
+	52% { box-shadow: 0 0 25px #f7db6e; }
+	53% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	69% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	70% { box-shadow: 0 0 25px #fff; }
+	71% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	75% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	76% { box-shadow: 0 0 25px #fff; }
+	77% { box-shadow: 0 0 25px #a8d3f0; }
+	78% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+	100% { box-shadow: 0 0 25px rgba(0,0,0,.3); }
+}

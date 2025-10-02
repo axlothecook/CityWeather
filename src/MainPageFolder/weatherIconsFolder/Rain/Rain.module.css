@@ -1,0 +1,15 @@
+.rain {
+    position: relative;
+    --scale-fully-cloudy: 0.8;
+}
+
+.rain_cloud {
+    composes: cloud_big from '../Fully_Cloudy/Fully_Cloudy.module.css';
+    background-image: radial-gradient(circle, #7f8c8d);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+}
+
+.rain_cloud::before {
+    background-image: radial-gradient(farthest-side at 40% 50%, #95a5a6, #7f8c8d);
+    box-shadow: calc(var(--scale-fully-cloudy) * 7.5rem) -1.5rem 0 calc(var(--scale-fully-cloudy) * 2.3rem) #7f8c8d;
+}

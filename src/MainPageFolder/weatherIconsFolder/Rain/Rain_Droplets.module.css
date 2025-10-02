@@ -1,0 +1,79 @@
+.raindrop_parent {
+    animation: translateDown 2s linear infinite;
+    --scale-fully-cloudy: 0.8;
+}
+
+.first_raindrop_parent {
+    composes: raindrop_parent;
+    position: absolute;
+    height: calc(var(--scale-fully-cloudy) * 3rem);
+    top: calc(var(--scale-fully-cloudy) * 10rem);
+	left: calc(var(--scale-fully-cloudy) * 3.5rem);
+}
+
+.second_raindrop_parent {
+    composes: raindrop_parent;
+    position: absolute;
+    height: calc(var(--scale-fully-cloudy) * 10rem);
+    top: calc(var(--scale-fully-cloudy) * 9rem);
+	left: calc(var(--scale-fully-cloudy) * 11rem);
+}
+
+.third_raindrop_parent {
+    composes: raindrop_parent;
+    position: absolute;
+    height: calc(var(--scale-fully-cloudy) * 1.5rem);
+    top: calc(var(--scale-fully-cloudy) * 9rem);
+	left: calc(var(--scale-fully-cloudy) * 18rem);
+}
+
+.fourth_raindrop_parent {
+    composes: raindrop_parent;
+    position: absolute;
+    height: calc(var(--scale-fully-cloudy) * 1.5rem);
+    top: calc(var(--scale-fully-cloudy) * 8rem);
+	left: calc(var(--scale-fully-cloudy) * 8.5rem);
+}
+
+.raindroplet {
+	position: absolute;
+	padding: 0;
+	background-color: rgb(59, 155, 245);
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.44);
+	height: calc(var(--scale-fully-cloudy) * 3rem);
+    width: calc(var(--scale-fully-cloudy) * 3rem);	
+	border-radius: 0% 100% 100% 100%;
+    transform: rotate(45deg);
+    will-change: transform;
+    animation: fadeOut 2s linear infinite;
+}
+
+.first_raindrop {
+    composes: raindroplet;
+}
+
+.second_raindrop {
+    composes: raindroplet;
+    height: calc(var(--scale-fully-cloudy) * 5rem);
+    width: calc(var(--scale-fully-cloudy) * 5rem);
+}
+
+.third_raindrop {
+    composes: raindroplet;
+}
+
+.fourth_raindrop {
+    composes: raindroplet;
+    height: calc(var(--scale-fully-cloudy) * 1.5rem);
+    width: calc(var(--scale-fully-cloudy) * 1.5rem);
+}
+
+@keyframes translateDown {
+	0% { transform: translatey(0%); }
+	100% { transform: translatey(70%); }
+}
+
+@keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}

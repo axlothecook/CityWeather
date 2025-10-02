@@ -28,12 +28,13 @@
   width: 400vw;
   transform: rotate(90deg) translateY(-100vh);
   transform-origin: top left;
+  /* border: 3px solid red; */
 }
 
 .wrapperNoSelection {
   composes: wrapper;
   width: 100vw;
-  /* border: 3px solid black; */
+  /* border: 10px solid green; */
 }
 
 .slideOne {
@@ -53,10 +54,14 @@
   background-color: orange;
 }
 
-
 .slideFour {
   composes: slide;
   background-color: green;
+}
+
+.slideTwoChild {
+  border: 1px solid black;
+  padding: 11rem;
 }
 
 .divWithSearchBar {
@@ -143,23 +148,59 @@ li:hover {
   cursor: pointer;
 }
 
-.blobParent {
+.blobParentNoTransition {
   z-index: -1;
-  /* border: 3px solid black; */
+  border: 3px solid black;
   animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
 }
 
+.blobParentTransition {
+  z-index: 5;
+  border: 3px solid black;
+  width: 50vw;
+  height: 50vh;
+  /* animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate; */
+}
+
 .blob {
-  width: 400px;
   aspect-ratio: 1/1;
-  border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
   background: linear-gradient(
     rgba(20, 202, 238, 0.5) 0%,
     rgba(41, 116, 221, 0.8) 40%,
     rgba(126, 26, 247, 0.8) 100%
   );
+}
+
+.blobNoTransition {
+  composes: blob;
+  width: 400px;
+  border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
   animation: changeShapeBlob 6s linear infinite, rotateBlob 12s linear infinite;
   filter: blur(50px);
+}
+
+.blobTransition {
+  composes: blob;
+  animation: blobTransition 2s linear;
+  filter: none;
+  visibility: visible;
+  background-color: rebeccapurple;
+  width: inherit;
+  height: inherit;
+}
+
+@keyframes blobTransition {
+  from {
+    filter: blur(50px);
+    width: 400px;
+  }
+  to {
+    filter: blur(0px);
+    width: inherit;
+    height: inherit;
+    /* height: fit-content */
+    /* height: 100vh; */
+  }
 }
 
 @keyframes rotateBlob {
@@ -196,41 +237,21 @@ li:hover {
 @keyframes changeShapeBlob {
   0%,
   100% {
-    /* border-top-left-radius: 30% 30%;
-    border-top-right-radius: 70% 40%; */
     border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
-    /* border-radius: 30% 70% / 30% 40% ; */
-    /* border-color: yellow; */
   }
 
   20% {
-    /* border-top-left-radius: 40% 40%;
-    border-top-right-radius: 65% 35%; */
     border-radius: 40% 65% 50% 50% / 40% 35% 35% 65%;
-    /* border-radius: 40% 65% / 40% 35% ; */
-    /* border-color: red; */
   }
 
   40% {
-    /* border-top-left-radius: 35% 65%;
-    border-top-right-radius: 65% 50%; */
     border-radius: 35% 65% 65% 35% / 65% 50% 50% 25%;
-    /* border-radius: 35% 65% / 65% 50% ; */
-    /* border-color: purple; */
   }
   60% {
-    /* border-top-left-radius: 40% 30%;
-    border-top-right-radius: 65% 30%; */
     border-radius: 40% 65% 50% 50% / 30% 30% 70% 75%;
-    /* border-radius: 40% 65% / 30% 30%; */
-    /* border-color: blue; */
   }
   80% {
-    /* border-top-left-radius: 40% 50%;
-    border-top-right-radius: 60% 50%; */
     border-radius: 40% 60% 40% 60% / 50% 50% 50% 60%;
-    /* border-radius: 40% 60% / 50% 50%; */
-    /* border-color: green; */
   }
 }
 
