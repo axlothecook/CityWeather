@@ -1,0 +1,161 @@
+.snow {
+    /* border: 1px solid red; */
+    --snow-cloud-scale: 0.9;
+    position: relative;
+    width: calc(var(--snow-cloud-scale) * 18rem);
+    height: 20rem;
+}
+
+.snow_cloud {
+    /* border: 1px solid purple; */
+    composes: partial_cloudy_cloud from '../Partial_Cloudy/Partial_Cloudy.module.css';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(var(--snow-cloud-scale) * 18rem);
+    width: calc(var(--snow-cloud-scale) * 18rem);
+}
+
+.snow_cloud::before {
+    content: '';
+    position: absolute;
+    right: 3%;
+    border-radius: 50%;
+    border-bottom-left-radius: 0;
+    z-index: 2;
+    background-color: #ecf0f1;
+    background-image: radial-gradient(#ecf0f1, #bdc3c7);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+    height: calc(var(--snow-cloud-scale) * 40%);
+    width: calc(var(--snow-cloud-scale) * 40%);
+    top: 27%;
+}
+
+.snow_cloud::after {
+    content: '';
+    position: absolute;
+    right: 30%;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+    z-index: 1;
+    background-color: #ecf0f1;
+    background-image: radial-gradient(#ecf0f1, #bdc3c7);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+    height: calc(var(--snow-cloud-scale) * 60%);
+    width: calc(var(--snow-cloud-scale) * 70%);
+    top: 9%;
+}
+
+.snowflakesContainer {
+    /* border: 3px solid yellow; */
+    position: absolute;
+    width: 50%;
+    height: 58%;
+    margin-right: auto;
+    margin-left: 5rem;
+    margin-top: 8rem;
+}
+
+.snowflake {
+    /* border: 1px solid yellow; */
+    position: absolute;
+    top: 0;
+    /* z-index: 9999; */
+    color: #fff;
+    font-size: calc(var(--snow-cloud-scale) * 1.6);
+    /* font-family: Arial; */
+    text-shadow: 0 0 1px #000;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+
+.snowflake:nth-of-type(0) {
+    left: 1%;
+    animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s
+}
+
+.snowflake:nth-of-type(1) {
+    left: 3%;
+    animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s
+}
+
+.snowflake:nth-of-type(2) {
+    left: 5%;
+    animation-delay: 6s, .5s;
+    animation-delay: 6s, .5s
+}
+
+.snowflake:nth-of-type(3) {
+    left: 25%;
+    animation-delay: 4s, 2s;
+    animation-delay: 4s, 2s
+}
+
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    animation-delay: 2s, 2s;
+    animation-delay: 2s, 2s
+}
+
+.snowflake:nth-of-type(5) {
+    left: 12%; 
+    animation-delay: 8s, 3s;
+    animation-delay: 8s, 3s
+}
+
+.snowflake:nth-of-type(6) {
+    left: 37%;
+    animation-delay: 6s, 2s;
+    animation-delay: 6s, 2s
+}
+
+.snowflake:nth-of-type(7) {
+    left: 33%;
+    animation-delay: 2.5s, 1s;
+    animation-delay: 2.5s, 1s
+}
+
+.snowflake:nth-of-type(8) { 
+    left: 6%;
+    animation-delay: 1s, 0s;
+    animation-delay: 1s, 0s
+}
+
+.snowflake:nth-of-type(9) { 
+    left: 16%;
+    animation-delay: 3s, 1.5s;
+    animation-delay: 3s, 1.5s
+}
+
+@keyframes snowflakes-fall{
+    0% {
+        top: 0%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes snowflakes-shake{
+    0% {
+        transform: translateX(0px);
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(80px);
+        transform: translateX(80px);
+    }
+    100%{
+        transform: translateX(0px);
+        transform: translateX(0px);
+    }
+}

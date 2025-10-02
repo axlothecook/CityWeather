@@ -1,0 +1,65 @@
+.cloud_big {
+    --scale-fully-cloudy: 0.8;
+    position: relative;
+    height: calc(var(--scale-fully-cloudy) * 7rem);
+    width: calc(var(--scale-fully-cloudy) * 24rem);
+    background: #ccc;
+    border-radius: 100px;
+}
+
+.cloud_big::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--scale-fully-cloudy) * (-5rem));
+    left: calc(var(--scale-fully-cloudy) * 3rem);
+    width: calc(var(--scale-fully-cloudy) * 9rem);
+    height: calc(var(--scale-fully-cloudy) * 9rem);
+    background: #ccc;
+    border-radius: 50%;
+    box-shadow: calc(var(--scale-fully-cloudy) * 7rem) 0 0 calc(var(--scale-fully-cloudy) * 2.3rem) #ccc;
+}
+
+.cloud_small {
+    position: relative;
+    height: calc(var(--scale-fully-cloudy) * 3rem);
+    width: calc(var(--scale-fully-cloudy) * 9rem);
+    border-radius: 100px;
+}
+
+.cloud_small_bottom_left {
+    composes: cloud_small;
+    background: grey;
+    top: 30%;
+    right: 5%;
+    animation: translateRight 2s linear infinite alternate;
+}
+
+.cloud_small_top_right {
+    composes: cloud_small;
+    background: grey;
+    top: -90%;
+    left: 70%;
+    animation: translateLeft 2s linear infinite alternate;
+}
+
+.cloud_small_bottom_left::before, .cloud_small_top_right::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--scale-fully-cloudy) * (-2rem));
+    left: calc(var(--scale-fully-cloudy) * 1rem);
+    width: calc(var(--scale-fully-cloudy) * 3rem);
+    height: calc(var(--scale-fully-cloudy) * 3rem);
+    background: grey;
+    border-radius: 50%;
+    box-shadow: calc(var(--scale-fully-cloudy) * 3.2rem) 0 0 calc(var(--scale-fully-cloudy) * 1.2rem) grey;
+}
+
+@keyframes translateLeft {
+	0% { transform: translatex(5%); }
+	100% { transform: translatex(-20%); }
+}
+
+@keyframes translateRight {
+	0% { transform: translatex(-20%); }
+	100% { transform: translatex(5%); }
+}

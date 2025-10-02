@@ -1,0 +1,89 @@
+.partial_cloudy {
+    position: relative;
+    width: fit-content;
+    --scale-sun-cloudy-day: 0.85;
+    --scale-clear-night: 0.85;
+}
+
+.partial_cloudy_cloud {
+    position: absolute;
+    top: 4rem;
+    right: 2.5rem;
+    z-index: 2;
+    will-change: transform;
+}
+
+/* partial cloudy - DAY */
+.partial_cloudy_cloud_day {
+    composes: partial_cloudy_cloud;
+    height: calc(var(--scale-sun-cloudy-day) * 12rem);
+    width: calc(var(--scale-sun-cloudy-day) * 12rem);
+    animation: translateLeft 2s linear infinite alternate;
+}
+
+.partial_cloudy_cloud_day::before, .partial_cloudy_cloud_night::before {
+    content: '';
+    position: absolute;
+    right: 3%;
+    border-radius: 50%;
+    border-bottom-left-radius: 0;
+    z-index: 2;
+    background-color: #ecf0f1;
+    background-image: radial-gradient(#ecf0f1, #bdc3c7);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+}
+
+.partial_cloudy_cloud_day::before {
+    height: calc(var(--scale-sun-cloudy-day) * 40%);
+    width: calc(var(--scale-sun-cloudy-day) * 40%);
+    top: 27%;
+}
+
+.partial_cloudy_cloud_day::after, .partial_cloudy_cloud_night::after {
+    content: '';
+    position: absolute;
+    right: 30%;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+    z-index: 1;
+    background-color: #ecf0f1;
+    background-image: radial-gradient(#ecf0f1, #bdc3c7);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+}
+
+.partial_cloudy_cloud_day::after {
+    height: calc(var(--scale-sun-cloudy-day) * 60%);
+    width: calc(var(--scale-sun-cloudy-day) * 70%);
+    top: 10%;
+}
+
+/* partial cloudy - NIGHT */
+.partial_cloudy_cloud_night {
+    composes: partial_cloudy_cloud;
+    height: calc(var(--scale-clear-night) * 12rem);
+    width: calc(var(--scale-clear-night) * 12rem);
+    animation: translateRight 2s linear infinite alternate;
+}
+
+.partial_cloudy_cloud_night::before {
+    height: calc(var(--scale-clear-night) * 40%);
+    width: calc(var(--scale-clear-night) * 40%);
+    top: 37%;
+}
+
+.partial_cloudy_cloud_night::after {
+    height: calc(var(--scale-clear-night) * 60%);
+    width: calc(var(--scale-clear-night) * 70%);
+    top: 20%;
+}
+
+
+@keyframes translateLeft {
+	0% { transform: translatex(5%); }
+	100% { transform: translatex(-20%); }
+}
+
+@keyframes translateRight {
+	0% { transform: translatex(15%); }
+	100% { transform: translatex(30%); }
+}
