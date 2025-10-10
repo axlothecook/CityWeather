@@ -1,0 +1,120 @@
+.container_parent {
+  /* border: 3px solid red; */
+  /* height: 50%; */
+}
+
+.container_child {
+  /* border: 1px solid orange; */
+  padding-top: 2rem;
+  padding-left: 1rem;
+  height: calc(100vh / 2.3);
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+}
+
+/* Clear  */
+body {
+  --clear-day: linear-gradient(to bottom, rgb(156, 219, 255), rgb(17, 183, 248));
+  --clear-night: linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185));
+  --snow-windy: linear-gradient(to top, rgba(149, 157, 168, 0.8), rgba(12, 125, 163, 0.5));
+}
+
+.clear_bg {
+  composes: container_child;
+}
+
+.clear_day_bg {
+  composes: clear_bg;
+  background-image: var(--clear-day);
+}
+.clear_night_bg {
+  composes: clear_bg;
+  background-image: var(--clear-night);
+}
+
+/* Partial Cloudy */
+.partial_cloudy {
+  composes: container_child;
+}
+
+.partial_cloudy_day_bg{
+  composes: partial_cloudy;
+  background-image: var(--clear-day);
+}
+.partial_cloudy_night_bg{
+  composes: container_child;
+  background-image: var(--clear-night);
+}
+
+/* Snow */
+.snow {
+  composes: container_child;
+}
+
+.snow_day_bg{
+  composes: snow;
+  background-image: var(--snow-windy);
+}
+
+.snow_night_bg{
+  composes: snow;
+  background-image: linear-gradient(to bottom, rgba(3, 3, 116, 0.8), rgba(21, 21, 112, 0.6), rgba(117, 125, 136, 0.8));
+}
+
+/* Windy */
+.windy {
+  composes: container_child;
+}
+
+.wind_day_bg{
+  composes: windy;
+  background-image: var(--snow-windy);
+}
+.wind_night_bg{
+  composes: windy;
+  background-image: linear-gradient(to bottom, rgba(7, 7, 121, 0.8), rgba(16, 8, 90, 0.6));
+}
+
+/* Rain */
+.rain {
+  composes: container_child;
+}
+
+.rain_day_bg{
+  composes: rain;
+  background-image: linear-gradient(to top, rgba(50, 52, 54, 0.8), rgba(123, 125, 126, 0.4));
+}
+.rain_night_bg{
+  composes: rain;
+  background-image: linear-gradient(to bottom, rgba(2, 1, 26, 0.836), rgba(3, 11, 53, 1));
+}
+
+/* Fully Cloudy */
+.fully_cloudy{
+  composes: container_child;
+}
+
+.fully_cloudy_day_bg{
+  composes: container_child;
+  background-image: linear-gradient(to top, rgba(116, 125, 129, 0.8), rgba(90, 99, 102, 0.4));
+}
+
+.fully_cloudy_night_bg{
+  composes: container_child;
+  background-image: linear-gradient(to bottom, rgba(10, 27, 77, 0.8), rgba(4, 13, 43, 0.9));
+}
+
+/* Thunderstorm */
+.thunderstorm {
+  composes: container_child;
+}
+
+.thunder_cloudy_day_bg{
+  composes: container_child;
+  background-image: linear-gradient(to bottom, rgba(61, 63, 65, 0.8), rgba(42, 43, 44, 0.9));
+}
+
+.thunder_cloudy_night_bg{
+  composes: container_child;
+  background-image: linear-gradient(to bottom, rgba(1, 1, 48, 0.9), rgba(20, 20, 68, 0.8), rgba(0, 0, 0, 0.6));
+}

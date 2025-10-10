@@ -1,6 +1,11 @@
 .rain {
-    position: relative;
     --scale-fully-cloudy: 0.8;
+    position: relative;
+    /* border: 1px solid black; */
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .rain_cloud {

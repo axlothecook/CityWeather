@@ -1,13 +1,19 @@
 .wind_container {
     position: relative;
     --scale-wind: 0.8;
+    /* border: 1px solid black; */
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .small_windy_cloud {
     composes: cloud_small from '../Fully_Cloudy/Fully_Cloudy.module.css';
-    background: #ccc;
-    top: calc(var(--scale-wind) * (-7rem));
+    height: calc(var(--scale-wind) * 3rem);
+    width: calc(var(--scale-wind) * 9rem);
     left: calc(var(--scale-wind) * (-6rem));
+    background: #ccc;
     animation: translateLeft 2s linear infinite alternate;
 }
 
@@ -24,7 +30,6 @@
 }
 
 .wind_bar {
-    position: absolute;
     height: calc(var(--scale-wind) * 2rem);
     width: calc(var(--scale-wind) * 24rem);
     background: #eee;
@@ -84,7 +89,6 @@
 .middle_wind_bar::before {
     content: '';
     position: absolute;
-    top: calc(var(--scale-wind) * 0rem);
     left: calc(var(--scale-wind) * 27rem);
     width: calc(var(--scale-wind) * 11.6rem);
     height: calc(var(--scale-wind) * 2rem);
@@ -108,7 +112,7 @@
 .middle_wind_bar_branchoff_finisher::before {
     content: '';
     position: absolute;
-    top: calc(var(--scale-wind) * -2.69rem);
+    top: calc(var(--scale-wind) * -2.75rem);
     left: calc(var(--scale-wind) * 34rem);
     width: calc(var(--scale-wind) * 5rem);
     height: calc(var(--scale-wind) * 2rem);
@@ -159,11 +163,11 @@
 }
 
 @keyframes translateRight {
-	0% { transform: translatex(15%); }
-	100% { transform: translatex(30%); }
+	0% { transform: translatex(-20%); }
+	100% { transform: translatex(10%); }
 }
 
 @keyframes translateLeft {
-	0% { transform: translatex(5%); }
-	100% { transform: translatex(-20%); }
+	0% { transform: translatex(40%); }
+	100% { transform: translatex(10%); }
 }

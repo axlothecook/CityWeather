@@ -1,13 +1,16 @@
 .partial_cloudy {
+    /* border: 3px solid black; */
     position: relative;
     width: fit-content;
     --scale-sun-cloudy-day: 0.85;
     --scale-clear-night: 0.85;
+    display: flex;
+    align-items: center;
 }
 
 .partial_cloudy_cloud {
     position: absolute;
-    top: 4rem;
+    top: 11rem;
     right: 2.5rem;
     z-index: 2;
     will-change: transform;
@@ -18,7 +21,7 @@
     composes: partial_cloudy_cloud;
     height: calc(var(--scale-sun-cloudy-day) * 12rem);
     width: calc(var(--scale-sun-cloudy-day) * 12rem);
-    animation: translateLeft 2s linear infinite alternate;
+    animation: translateLeft 6s linear infinite alternate;
 }
 
 .partial_cloudy_cloud_day::before, .partial_cloudy_cloud_night::before {
@@ -62,7 +65,7 @@
     composes: partial_cloudy_cloud;
     height: calc(var(--scale-clear-night) * 12rem);
     width: calc(var(--scale-clear-night) * 12rem);
-    animation: translateRight 2s linear infinite alternate;
+    animation: translateRight 8s linear infinite alternate;
 }
 
 .partial_cloudy_cloud_night::before {
@@ -79,11 +82,11 @@
 
 
 @keyframes translateLeft {
-	0% { transform: translatex(5%); }
-	100% { transform: translatex(-20%); }
+	0% { transform: translatex(40%); }
+	100% { transform: translatex(-40%); }
 }
 
 @keyframes translateRight {
-	0% { transform: translatex(15%); }
+	0% { transform: translatex(-60%); }
 	100% { transform: translatex(30%); }
 }

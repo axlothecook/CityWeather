@@ -1,0 +1,27 @@
+.slideOne {
+  /* border: 3px solid red; */
+  composes: slide from '../../MainPageStyle.module.css';
+  background-color: rgb(114, 114, 180);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_bar_container_first_slide {
+    width: 100%;
+    /* border: 3px solid black; */
+}
+
+/* is z-index neeeded? */
+.search_bar_container {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 5px;
+  border: 1px solid red;
+  margin-bottom: 6rem;
+}

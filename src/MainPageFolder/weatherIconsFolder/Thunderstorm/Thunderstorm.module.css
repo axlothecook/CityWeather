@@ -1,10 +1,37 @@
 .thunderstorm {
     position: relative;
     --scale-fully-cloudy: 0.8;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid black; */
 }
 
 .thunder_cloud {
-    composes: rain_cloud from '../Rain/Rain.module.css';
+    position: relative;
+    height: calc(var(--scale-fully-cloudy) * 7rem);
+    width: calc(var(--scale-fully-cloudy) * 24rem);
+    border-radius: 100px;
+    background-image: radial-gradient(circle, #7f8c8d);
+    box-shadow: 0 0 25px rgba(0,0,0,.3);
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunder_cloud::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--scale-fully-cloudy) * (-5rem));
+    left: calc(var(--scale-fully-cloudy) * 3rem);
+    width: calc(var(--scale-fully-cloudy) * 9rem);
+    height: calc(var(--scale-fully-cloudy) * 9rem);
+    border-radius: 50%;
+    z-index: 2;
+    background-image: radial-gradient(farthest-side at 40% 50%, #95a5a6, #7f8c8d);
+    animation: thunder 4s linear .02s infinite alternate;
+}
+
+.thunder_cloud::after {
     animation: thunder 4s linear .02s infinite alternate;
 }
 
@@ -12,22 +39,12 @@
     position: absolute;
     height: calc(var(--scale-fully-cloudy) * 13rem);
     width: calc(var(--scale-fully-cloudy) * 13rem);
-    background: #ccc;
     border-radius: 50%;
     background-image: radial-gradient(circle, #95a5a6, #7f8c8d);
     box-shadow: 0 0 25px rgba(0,0,0,.3);
-    top: calc(var(--scale-fully-cloudy) * (-8.5rem));
+    top: calc(var(--scale-fully-cloudy) * 3.5rem);
     left: calc(var(--scale-fully-cloudy) * 8.5rem);
     z-index: 1;
-    animation: thunder 4s linear .02s infinite alternate;
-}
-
-.thunder_cloud::before {
-    z-index: 2;
-    animation: thunder 4s linear .02s infinite alternate;
-}
-
-.thunder_cloud::after {
     animation: thunder 4s linear .02s infinite alternate;
 }
 
@@ -40,13 +57,13 @@
 .thunderboltContainer_first {
     composes: thunderboltContainer;
     z-index: 0;
-    top: calc(var(--scale-fully-cloudy) * 8rem);
-    left: calc(var(--scale-fully-cloudy) * 5rem);
+    top: calc(var(--scale-fully-cloudy) * 18rem);
+    left: calc(var(--scale-fully-cloudy) * 7rem);
 }
 
 .thunderboltContainer_second {
     composes: thunderboltContainer;
-    top: calc(var(--scale-fully-cloudy) * 3rem);
+    top: calc(var(--scale-fully-cloudy) * 13rem);
     left: calc(var(--scale-fully-cloudy) * 20rem);
 }
 
