@@ -1,0 +1,5 @@
+.slide_Three_Parent, .slide_Three_Child {
+    composes: slide from '../../MainPageStyle.module.css';
+}
+
+/* .slide_Three_Child{} */

@@ -1,0 +1,15 @@
+.input {
+    width: 96%;
+    height: 35px;
+    border: none;
+    font-size: 17px;
+    background-color: #eee;
+    border: none;
+    border-radius: 20px;
+    padding: 0 20px 0;
+}
+
+.input:focus, .input:active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

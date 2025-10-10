@@ -1,8 +1,11 @@
 .clearNight {
     position: relative;
-    height: calc(var(--scale-clear-night) * 15rem);
-    width: calc(var(--scale-clear-night) * 15rem);
     --scale-clear-night: 0.85;
+    height: calc(var(--scale-clear-night) * 20rem);
+    width: calc(var(--scale-clear-night) * 20rem);
+    /* border: 1px solid black; */
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .clearNight::before {
@@ -10,8 +13,8 @@
     position: absolute;
     height: 80%;
     width: 80%;
-    top: 10%;
-    right: 10%;
+    top: 0%;
+    right: 40%;
     border-radius: 50%;
     z-index: 2;
     background-color: transparent;
@@ -23,6 +26,8 @@
     position: absolute;
     height: 100%;
     width: 100%;
+    top: -6%;
+    right: 20%;
     border-radius: 50%;
     z-index: 1;
     background-color: transparent;

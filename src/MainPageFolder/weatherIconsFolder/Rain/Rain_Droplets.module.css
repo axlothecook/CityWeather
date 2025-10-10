@@ -1,3 +1,9 @@
+.raindrop_wrapper {
+    /* border: 1px solid black; */
+    width: 100%;
+    position: relative;
+}
+
 .raindrop_parent {
     animation: translateDown 2s linear infinite;
     --scale-fully-cloudy: 0.8;
@@ -7,15 +13,15 @@
     composes: raindrop_parent;
     position: absolute;
     height: calc(var(--scale-fully-cloudy) * 3rem);
-    top: calc(var(--scale-fully-cloudy) * 10rem);
+    top: calc(var(--scale-fully-cloudy) * 1rem);
 	left: calc(var(--scale-fully-cloudy) * 3.5rem);
 }
 
 .second_raindrop_parent {
     composes: raindrop_parent;
     position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 10rem);
-    top: calc(var(--scale-fully-cloudy) * 9rem);
+    height: calc(var(--scale-fully-cloudy) * 7.2rem);
+    top: calc(var(--scale-fully-cloudy) * 2rem);
 	left: calc(var(--scale-fully-cloudy) * 11rem);
 }
 
@@ -23,7 +29,7 @@
     composes: raindrop_parent;
     position: absolute;
     height: calc(var(--scale-fully-cloudy) * 1.5rem);
-    top: calc(var(--scale-fully-cloudy) * 9rem);
+    top: calc(var(--scale-fully-cloudy) * 1rem);
 	left: calc(var(--scale-fully-cloudy) * 18rem);
 }
 
@@ -31,7 +37,7 @@
     composes: raindrop_parent;
     position: absolute;
     height: calc(var(--scale-fully-cloudy) * 1.5rem);
-    top: calc(var(--scale-fully-cloudy) * 8rem);
+    top: calc(var(--scale-fully-cloudy) * 1rem);
 	left: calc(var(--scale-fully-cloudy) * 8.5rem);
 }
 

@@ -1,103 +1,31 @@
 import styles from './MainPageStyle.module.css';
-import { useState, useRef, useEffect, use } from 'react';
-import ReactGoogleAutocomplete from "react-google-autocomplete";
-import ClearDay from './weatherIconsFolder/Clear_Day/ClearDay';
-import ClearNight from './weatherIconsFolder/Clear_Night/ClearNight';
-import PartialCloudy from './weatherIconsFolder/Partial_Cloudy/PartialCloudy';
-import Windy from './weatherIconsFolder/Wind/Windy';
-import Cloudy from './weatherIconsFolder/Fully_Cloudy/FullyCloudy';
-import Rain from './weatherIconsFolder/Rain/Rain';
-import Thunderstorm from './weatherIconsFolder/Thunderstorm/Thunderstorm';
-import Snow from './weatherIconsFolder/Snow/Snow';
+import { useState, useRef } from 'react';
+import { WeatherContext } from './components/Contexts';
+import useWeatherData from './components/Fetching/FetchWeatherData';
+import SlideOne from './components/Slide_One/Slide_One';
+import SlideTwo from './components/Slide_Two/Slide_Two';
+import SlideThree from './components/Slide_Three/Slide_Three';
 // import API_KEY from '../../.env';
 //process.env.REACT_APP_GOOGLEMAPS_API_KEY
 // const API_KEY = globalThis.GOOGLE_MAPS_API_KEY;
-const API_KEY = 'AIzaSyBnxOTyLUp6dwVolwpt7T_ll3yEMKWDjXo';
 
 const MainPage = () => {
-    const [currentWeather, setCurrentWeather] = useState();
+    const [selectedPlace, setSelectedPlace] = useState(false);
     const [dailyForecastData, setDailyForecastData] = useState();
     const [hourlyForecastData, setHourlyForecastData] = useState();
     const [videosArr, setVideosArr] = useState([]);
     const [imagesArr, setImagesArr] = useState([]);
-    const [selectedPlace, setSelectedPlace] = useState(false);
-    // let placeRef = useRef(0);
     let countRef = useRef(0);
     let xCoordRef = useRef(0);
     let yCoordRef = useRef(0);
+    let shouldRefetch = useRef(false);
+    let { currentWeather, loading, error } = useWeatherData(shouldRefetch, selectedPlace);
 
-    function fetchWeatherData(latitute, longitute) {
-        fetch(`https://weather.googleapis.com/v1/currentConditions:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}`)
-        .then((response) => response.json())
-        .then((response) => {
-            console.log('current weather:');
-            console.log(response);
-            setCurrentWeather(response);
-        })
-        .catch((e) => console.log(`Fetch WEather Data Error: ${e}`));
+    // console.log('currentWeather in main:');
+    // console.log(currentWeather);
+    // console.log(loading);
+    // console.log(error);
 
-        // fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}`)
-        // .then((response) => response.json())
-        // .then((response) => {
-        //     console.log('daily forecast:');
-        //     console.log(response);
-        //     // setDailyForecastData(response);
-        //     // if(response.nextPageToken) {
-        //     //     let temp = response.nextPageToken;
-        //     //     fetch(`https://weather.googleapis.com/v1/forecast/days:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&pageToken=${temp}`)
-        //     //     .then((response) => response.json())
-        //     //     .then((response) => {
-        //     //         console.log('response 2:');
-        //     //         console.log(response);
-        //     //     })
-        //     //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
-        //     // };
-        // })
-        // .catch((e) => console.log(`Fetch WEather Data Error: ${e}`));
-
-        // fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24`)
-        // .then((response) => response.json())
-        // .then((response) => {
-        //     console.log('hourly forecast:');
-        //     console.log(response);
-        //     // setHourlyForecastData(response);
-        //     // if(response.nextPageToken) {
-        //     //     let temp = response.nextPageToken;
-        //     //     fetch(`https://weather.googleapis.com/v1/forecast/hours:lookup?key=${API_KEY}&location.latitude=${latitute}&location.longitude=${longitute}&hours=168&pageSize=24&pageToken=${temp}`)
-        //     //     .then((response) => response.json())
-        //     //     .then((response) => {
-        //     //         console.log('response 2:');
-        //     //         console.log(response);
-        //     //     })
-        //     //     .catch((e) => console.log(`Fetch Weather Data Error2: ${e}`));
-        //     // };
-        // })
-        // .catch((e) => console.log(`Fetch Weather Data Error1: ${e}`));
-    };
-
-    function fetchImages(placeId) {
-        fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "X-Goog-Api-Key": "AIzaSyBnxOTyLUp6dwVolwpt7T_ll3yEMKWDjXo",
-                "X-Goog-Fieldmask": "id,displayName,photos"
-            }
-        })
-        .then((reponse) => reponse.json())
-        .then((response) => {
-            let tempArr = [];
-            let counter = 0;
-            response.photos.map((photo) => {
-                tempArr.push({
-                    id: counter,
-                    link: `https://places.googleapis.com/v1/${photo.name}/media?maxHeightPx=400&maxWidthPx=400&key=${API_KEY}`,
-                });
-                counter++;
-            });
-            setImagesArr([...tempArr]);
-        })
-        .catch((e) => console.log(`Fetch Images Data Error: ${e}`));
-    };
 
     function fetchVideos(latitute, longitute) {
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&location=${latitute}%2C${longitute}&locationRadius=30mi&q=walking%20tour&type=video&videoDuration=long&key=${API_KEY}`)
@@ -124,78 +52,23 @@ const MainPage = () => {
             element.style.top = position.y + 'px';
         };
     };
-    
 
-    // useEffect(() => {
-    //     function switchTab() {
-    //         // console.log(window)
-    //         var element = document.querySelector('#secondSlideId');
-    //         if(element) {
-    //             console.log(window);
-    //             var position = element.getBoundingClientRect();
-    //             console.log(position);
-    //             console.log(element.scrollLeft)
-    //             // element.style.position = 'scroll'
-    //             // element.style.top = 0;
-    //             // element.style.left = 0;
-    //             // window.pageXOffset = position.left + 'px';
-    //             // window.screenTop = position.top + 'px';
-    //             element.scrollLeft
-    //         };
-    //     };
-
-    //     switchTab()
-
-    // }, [selectedPlace]);
+    {/* <div className={selectedPlace ? styles.blobParentTransition : styles.blobParentNoTransition} id='blobParent'>
+                        <div className={selectedPlace ? styles.blobTransition : styles.blobNoTransition}></div>
+                    </div> */}
 
     return (
         <div className={selectedPlace ? styles.outerWrapper : ''}>
             <div className={selectedPlace ? styles.wrapperSelection : styles.wrapperNoSelection}>
-                <div className={styles.slideOne}>
-                    <div className={styles.divWithSearchBar}>
-                        <h1>Search anywhere</h1>
-                        <ReactGoogleAutocomplete
-                            className={styles.input} 
-                            apiKey={API_KEY}
-                            style={{ width: "90%" }}
-                            onPlaceSelected={(place) => {
-                                // setBlob();
-                                setSelectedPlace(true);
-                                // switchTab();
-                                fetchWeatherData(place.geometry.location.lat(), place.geometry.location.lng());
-                                // fetchVideos(place.geometry.location.lat(), place.geometry.location.lng());
-                                // fetchImages(place.place_id);
-                            }}
-                            options={{
-                                types: ["(cities)"]
-                            }}
-                        />
-                    </div>
-                    {/* <div className={selectedPlace ? styles.blobParentTransition : styles.blobParentNoTransition} id='blobParent'>
-                        <div className={selectedPlace ? styles.blobTransition : styles.blobNoTransition}></div>
-                    </div> */}
-                </div>
-                {selectedPlace && 
-                <div className={styles.slideTwo} id='secondSlideId'>
-                    <div className={styles.slideTwoChild}>
-
-                        {/* {currentWeather && 
-                        <div>
-                            <img src={currentWeather.weatherCondition.iconBaseUri + (currentWeather.isDaytime ? '.svg' : '_dark.svg')} />
-                        </div>} */}
-
-                        {/* <ClearDay /> */}
-                        {/* <ClearNight /> */}
-                        {/* <PartialCloudy isDay={true} /> */}
-                        {/* <Cloudy /> */}
-                        {/* <Windy /> */}
-                        {/* <Rain /> */}
-                        {/* <Thunderstorm /> */}
-                        {/* <Snow /> */}
-                        
-                    </div>
-                </div>}
-                {selectedPlace && <div className={styles.slideThree}></div>}
+                <WeatherContext value={{ setSelectedPlace, shouldRefetch }}>
+                    <SlideOne />
+                </WeatherContext>
+                {/* {loading && <h1>loading</h1>}
+                {error && <h1>error</h1>} */}
+                <WeatherContext value={{ currentWeather, selectedPlace }}>
+                    {selectedPlace && <SlideTwo />}
+                    {selectedPlace && <SlideThree />}
+                </WeatherContext>
                 {selectedPlace && <div className={styles.slideFour}></div>}
             </div>
         </div>

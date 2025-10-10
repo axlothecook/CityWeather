@@ -2,7 +2,7 @@ import styles from './Rain_Droplets.module.css';
 
 const RainDroplets = () => {
     return (
-        <div>
+        <div className={styles.raindrop_wrapper}>
             <div className={styles.first_raindrop_parent}>
                 <div className={styles.first_raindrop}></div>
             </div>
