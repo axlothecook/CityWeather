@@ -1,0 +1,14 @@
+.section {
+    position: relative;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    background-color: oklch(14.5% 0 0);
+    /* height: 100%; */
+}
+
+.container {
+    position: absolute;
+    z-index: 10;
+    inset: 0;
+}

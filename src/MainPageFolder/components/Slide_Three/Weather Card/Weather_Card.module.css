@@ -1,0 +1,137 @@
+.card {
+    width: 33rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 1.3rem 1.6rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.middle_row {
+    display: flex;
+    justify-content: center;
+}
+
+.corner {
+    width: 42%;
+    height: 2.7rem;
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+.corner h3 {
+    position: absolute;
+    font-size: 1.6rem;
+    font-weight: 100;
+}
+
+.corner h1 {
+    font-size: 1.8rem;
+    z-index: 0;
+    opacity: 0.8;
+    color: #cfcfcf;
+}
+
+.corner div {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.corner div > h1 {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 100;
+}
+
+.top_left_corner {
+    composes: corner;
+}
+
+.top_left_corner div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.top_right_corner {
+    composes: corner;
+}
+
+.top_right_corner div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.top_right_corner h1 {
+    text-align: right;
+}
+
+.bottom_left_corner {
+    composes: corner;
+    height: 2.5rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bottom_left_corner div {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.bottom_right_corner {
+    composes: corner;
+    height: 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.bottom_right_corner > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.info_card {
+    composes: card;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info_card_first_child {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.7rem;
+}
+
+.info_card_first_child h1 {
+    font-size: 3rem;
+}
+
+.info_card_first_child h3 {
+    font-weight: 100;
+}
+
+.info_card_last_child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.measurement_unit span:last-of-type {
+    font-size: 0.7rem;
+}

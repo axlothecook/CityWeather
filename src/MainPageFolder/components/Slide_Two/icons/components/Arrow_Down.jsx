@@ -1,9 +1,9 @@
 import styles from '../Arrows.module.css';
 
-const ArrowDown = ({ isDay }) => {
+const ArrowDown = ({ isItDay }) => {
     return (
         <svg
-            style={{fill: `${isDay.current ? 'black' : '#ccc'}`}}
+            style={{fill: `${isItDay ? 'black' : '#ccc'}`}}
             className={styles.arrow_down}
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 640 640" 

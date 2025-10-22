@@ -1,0 +1,28 @@
+.icon {
+    width: 5rem;
+    /* fill: black; */
+}
+
+.icon_small_wind {
+    width: 3rem;
+}
+
+.temperature_icon {
+    composes: icon;
+    fill: rgb(234, 85, 80);
+}
+
+.air_cover_icon {
+    composes: icon;
+    fill: rgba(101, 185, 255);
+}
+
+.sun_icon {
+    composes: icon;
+    fill: rgba(248, 156, 17);
+}
+
+.cloud_icon {
+    composes: icon;
+    fill: grey;
+}
