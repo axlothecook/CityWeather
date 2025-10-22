@@ -1,10 +1,10 @@
-.container_parent {
-  /* border: 3px solid red; */
-  /* height: 50%; */
+body {
+  --clear-day: linear-gradient(to bottom, rgb(156, 219, 255), rgb(17, 183, 248));
+  --clear-night: linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185));
+  --snow-windy: linear-gradient(to top, rgba(149, 157, 168, 0.8), rgba(12, 125, 163, 0.5));
 }
 
 .container_child {
-  /* border: 1px solid orange; */
   padding-top: 2rem;
   padding-left: 1rem;
   height: calc(100vh / 2.3);
@@ -13,12 +13,6 @@
 }
 
 /* Clear  */
-body {
-  --clear-day: linear-gradient(to bottom, rgb(156, 219, 255), rgb(17, 183, 248));
-  --clear-night: linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185));
-  --snow-windy: linear-gradient(to top, rgba(149, 157, 168, 0.8), rgba(12, 125, 163, 0.5));
-}
-
 .clear_bg {
   composes: container_child;
 }

@@ -1,5 +1,14 @@
 .slide_Three_Parent, .slide_Three_Child {
     composes: slide from '../../MainPageStyle.module.css';
+    position: relative;
+    /* background-color: salmon; */
+    /* border: 1px solid black; */
 }
 
-/* .slide_Three_Child{} */
+.slide_Three_Child{
+    /* background-color: red; */
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
