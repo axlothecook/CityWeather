@@ -1,7 +1,6 @@
 .slide_Four_Parent {
     composes: slide from '../../MainPageStyle.module.css';
     /* border: 1px solid black; */
-    background-color: aquamarine;
 }
 
 .slide_Four_Child {
@@ -9,6 +8,20 @@
     padding: 0.7rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 3rem;
     height: 97%;
+    animation: appear linear;
+    animation-timeline: scroll();
+}
+
+@keyframes appear {
+    0% {
+        opactiy: 0;
+        scale: 0.2;
+    }
+
+    100% {
+        opactiy: 1;
+        scale: 1;
+    }
 }

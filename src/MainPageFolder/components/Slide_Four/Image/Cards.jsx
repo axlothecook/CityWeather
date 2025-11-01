@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import styles from './Image.module.css';
 import { PhotosAndVideosContext } from "../../Contexts";
+import ImageMsgComponent from "./ImageMsg";
 
 export const DragCards = () => {
   return (
@@ -13,23 +14,33 @@ export const DragCards = () => {
 
 const Cards = () => {
   const containerRef = useRef(null);
-  const { photoArr } = useContext(PhotosAndVideosContext);
-    // const [doubleClicked, setDoubleClicked] = useState(false);
+  const { 
+    photoArr, 
+    loadingPhotosRef,
+    errorPhotosRef,
+  } = useContext(PhotosAndVideosContext);
   
   return (
-    <div className={styles.container} ref={containerRef}>
-      {photoArr.current && photoArr.current.map((photo) => (
-        <Card
-          containerRef={containerRef}
-          key={photo.id} 
-          src={photo.link}
-          alt='Photo of searched city'
-          rotate="6deg"
-          top={photo.top}
-          left={photo.left}
-        />
-      ))}
-    </div>
+    <>
+      {(loadingPhotosRef.current || errorPhotosRef.current) && 
+        <ImageMsgComponent loading={loadingPhotosRef.current} error={errorPhotosRef.current} />
+      }
+      {(!loadingPhotosRef.current && !errorPhotosRef.current) && 
+        <div className={styles.container} ref={containerRef}>
+          {photoArr.current && photoArr.current.map((photo) => (
+            <Card
+              containerRef={containerRef}
+              key={photo.id} 
+              src={photo.link}
+              alt='Photo of searched city'
+              rotate="6deg"
+              top={photo.top}
+              left={photo.left}
+            />
+          ))}
+        </div>
+      }
+    </>
   );
 };
 

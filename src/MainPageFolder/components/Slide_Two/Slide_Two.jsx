@@ -3,7 +3,7 @@ import styles from './Slide_Two.module.css';
 import { WeatherContext } from '../Contexts';
 import SearchBarWrapper from '../Search Bar/Search_Bar_Wrapper';
 import SearchBar from '../Search Bar/Search_Bar';
-import AnimatedContainer from '../../Animated Container/Animated_container';
+import AnimatedContainer from './Animated Container/Animated_container';
 import TextContainer from './Text_container';
 
 const SlideTwo = () => {

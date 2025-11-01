@@ -7,9 +7,9 @@ const SlideOne = () => {
         <div className={styles.slideOne}>
             <div className={styles.search_bar_container}>
                 <h1>Search anywhere</h1>
-                    <SearchBarWrapper indicator={true}>
-                        <SearchBar />
-                    </SearchBarWrapper>
+                <SearchBarWrapper indicator={true}>
+                    <SearchBar />
+                </SearchBarWrapper>
             </div>
         </div>
     );

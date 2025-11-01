@@ -1,0 +1,144 @@
+.blobParentNoTransition {
+    position: absolute;
+    z-index: 1;
+    /* border: 1px solid black; */
+    animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.blobParentTransition {
+    position: absolute;
+    z-index: 5;
+    /* border: 3px solid black; */
+    animation: expand 3s linear;
+}
+
+@keyframes expand {
+    0% {
+        width: 400px;
+        height: auto;
+    }
+
+    50% {
+        width: 200vw;
+        height: 100vh;
+    }
+
+    100% {
+        width: 400px;
+        height: auto;
+    }
+}
+
+.blob {
+  aspect-ratio: 1/1;
+  background: linear-gradient(
+    rgba(20, 202, 238, 0.5) 0%,
+    rgba(41, 116, 221, 0.8) 40%,
+    rgba(126, 26, 247, 0.8) 100%
+  );
+}
+
+.blobNoTransition {
+  composes: blob;
+  width: 400px;
+  border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+  animation: changeShapeBlob 6s linear infinite, rotateBlob 12s linear infinite;
+  filter: blur(50px);
+  /* border: 1px solid black; */
+}
+
+.blobTransition {
+  composes: blob;
+  animation: blobTransition 3s linear;
+  filter: none;
+  visibility: visible;
+  background-color: rebeccapurple;
+  width: inherit;
+  height: inherit;
+}
+
+@keyframes blobTransition {
+  from {
+    filter: blur(50px);
+    scale: 1;
+  }
+
+  to {
+    filter: blur(0);
+    scale: 2;
+  }
+}
+
+@keyframes rotateBlob {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveBlob {
+  0%,
+  100% {
+    transform: translate(4vh, 4vh);
+  }
+  20% {
+    transform: translate(55vh, 15vh);
+  }
+  35% {
+    transform: translate(95vh, 20vh);
+  }
+  50% {
+    transform: translate(55vh, 50vh);
+  }
+  65% {
+    transform: translate(80vh, 30vh);
+  }
+  80% {
+    transform: translate(45vh, 7vh);
+  }
+}
+
+@keyframes changeShapeBlob {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+  }
+
+  20% {
+    border-radius: 40% 65% 50% 50% / 40% 35% 35% 65%;
+  }
+
+  40% {
+    border-radius: 35% 65% 65% 35% / 65% 50% 50% 25%;
+  }
+  60% {
+    border-radius: 40% 65% 50% 50% / 30% 30% 70% 75%;
+  }
+  80% {
+    border-radius: 40% 60% 40% 60% / 50% 50% 50% 60%;
+  }
+}
+
+/* @media (max-width: 1000px) {
+  .blob {
+    width: 300px;
+  }
+
+  @keyframes moveBlob {
+    0%,
+    100% {
+      transform: translate(20%, 10vh);
+    }
+    25% {
+      transform: translate(35%, 30vh);
+    }
+    50% {
+      transform: translate(45%, 40vh);
+    }
+    75% {
+      transform: translate(25%, 50vh);
+    }
+  }
+} */

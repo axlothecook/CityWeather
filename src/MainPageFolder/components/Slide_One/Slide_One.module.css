@@ -8,13 +8,11 @@
 }
 
 .search_bar_container_first_slide {
-    width: 100%;
-    /* border: 3px solid black; */
+  width: 100%;
 }
 
-/* is z-index neeeded? */
 .search_bar_container {
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 20px;

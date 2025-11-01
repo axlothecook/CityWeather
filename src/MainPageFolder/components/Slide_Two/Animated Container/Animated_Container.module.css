@@ -13,16 +13,12 @@ body {
 }
 
 /* Clear  */
-.clear_bg {
-  composes: container_child;
-}
-
 .clear_day_bg {
-  composes: clear_bg;
+  composes: container_child;
   background-image: var(--clear-day);
 }
 .clear_night_bg {
-  composes: clear_bg;
+  composes: container_child;
   background-image: var(--clear-night);
 }
 

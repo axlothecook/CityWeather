@@ -11,7 +11,7 @@ const ScrollCard = ({ dayInfo, temp, onDrag, defaultSelected, onClick }) => {
         onDrag();
       }}
       onClick={() => {
-        onClick();
+        if(onClick) onClick();
       }}
     >
       <button className={defaultSelected ? styles.selected_card : styles.normal_card} >

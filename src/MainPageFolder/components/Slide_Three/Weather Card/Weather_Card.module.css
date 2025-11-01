@@ -8,6 +8,8 @@
     border: none;
     border-radius: 2rem;
     padding: 1.3rem 1.6rem;
+    animation: appear linear;
+    animation-timeline: scroll();
 }
 
 .row {
@@ -31,7 +33,6 @@
 .corner h3 {
     position: absolute;
     font-size: 1.6rem;
-    font-weight: 100;
 }
 
 .corner h1 {
@@ -49,7 +50,6 @@
 .corner div > h1 {
     color: black;
     font-size: 1.6rem;
-    font-weight: 100;
 }
 
 .top_left_corner {
@@ -107,7 +107,7 @@
 .info_card {
     composes: card;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .info_card_first_child {
@@ -121,8 +121,8 @@
     font-size: 3rem;
 }
 
-.info_card_first_child h3 {
-    font-weight: 100;
+.info_card_first_child h2:nth-of-type(2) {
+    font-weight: 600;
 }
 
 .info_card_last_child {
@@ -134,4 +134,16 @@
 
 .measurement_unit span:last-of-type {
     font-size: 0.7rem;
+}
+
+@keyframes appear {
+    0% {
+        opactiy: 0;
+        scale: 0.3;
+    }
+
+    65% {
+        opactiy: 1;
+        scale: 1;
+    }
 }

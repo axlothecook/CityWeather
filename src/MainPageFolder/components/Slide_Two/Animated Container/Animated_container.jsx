@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styles from './Animated_Container.module.css';
-import { WeatherContext } from '../components/Contexts';
+import { WeatherContext } from '../../Contexts';
 
 const AnimatedContainer = ({ children }) => {
     const { weatherAnimations } = useContext(WeatherContext);

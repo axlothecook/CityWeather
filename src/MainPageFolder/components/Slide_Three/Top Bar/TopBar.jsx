@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import styles from './TopBar.module.css';
+import { WeatherContext } from '../../Contexts';
 
 const TopBar = ({ hourlyForecast, setHourlyForecast }) => {
+    const { weatherAnimations } = useContext(WeatherContext);
     return (
         <div className={styles.top_bar}>
             <div className={styles.sort_options}>
@@ -16,7 +19,7 @@ const TopBar = ({ hourlyForecast, setHourlyForecast }) => {
                 </button>
             </div>
             <div className={styles.top_bar_location_text}>
-                <h2>Next [{hourlyForecast ? '361 Hours' : '15 days'}]</h2>
+                <h2 style={{color: (weatherAnimations.isItDay) ? 'black' : 'white'}}>Next [{hourlyForecast ? '361 Hours' : '15 days'}]</h2>
             </div>
         </div>
     );

@@ -18,6 +18,10 @@ const RainDroplets = () => {
             <div className={styles.fourth_raindrop_parent}>
                 <div className={styles.fourth_raindrop}></div>
             </div>
+
+            {/* <div className={styles.first_raindrop_parent}>
+                <div className={styles.first_raindrop}></div>
+            </div> */}
         </div>
     )
 };

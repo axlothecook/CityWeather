@@ -34,6 +34,7 @@
   justify-content: flex-end;
   align-items: end;
   gap: 0.3rem;
+  text-align: right;
 }
 
 .city_country_text_container h1 {

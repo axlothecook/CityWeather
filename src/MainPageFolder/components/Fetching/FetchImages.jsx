@@ -1,6 +1,8 @@
-import { useEffect, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
+import { APIKeysContext } from "../Contexts";
 
-const useImageLink = (placeId, API_KEY) => {
+const useImageLink = (placeId) => {
+    const { GOOGLE_API_KEY } = useContext(APIKeysContext);
     const photoArr = useRef([]);
     const loadingPhotos = useRef(false);
     const errorPhotos = useRef(null);
@@ -65,7 +67,7 @@ const useImageLink = (placeId, API_KEY) => {
                     response.photos.map((photo) => {
                         tempArr.push({
                             id: counter,
-                            link: `https://places.googleapis.com/v1/${photo.name}/media?maxHeightPx=400&maxWidthPx=400&key=${API_KEY}`,
+                            link: `https://places.googleapis.com/v1/${photo.name}/media?maxHeightPx=400&maxWidthPx=400&key=${GOOGLE_API_KEY}`,
                             top: positionArray[counter].top,
                             left: positionArray[counter].left,
                         });
@@ -73,7 +75,10 @@ const useImageLink = (placeId, API_KEY) => {
                     });
                     photoArr.current = [...tempArr];
                 })
-                .catch((e) => console.log(`Fetch Images Data Error: ${e}`));
+                .catch((e) => {
+                    console.log(`Fetch Images Data Error: ${e}`);
+                    errorPhotos.current = e;
+                });
             } catch (err) {
                 photoArr.current = null;
                 errorPhotos.current = err;
