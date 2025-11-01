@@ -1,0 +1,6 @@
+[submodule "date-fns"]
+	path = date-fns
+	url = https://github.com/axlothecook/date-fns.git
+[submodule "src/MainPageFolder/google-weather-icons"]
+	path = src/MainPageFolder/google-weather-icons
+	url = https://github.com/axlothecook/google-weather-icons.git
