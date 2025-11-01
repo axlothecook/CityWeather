@@ -8,8 +8,9 @@ import WindRedIcon from '../icons/components/WindRed';
 import PrecipitationIcon from '../icons/components/Precip';
 import SunIcon from '../icons/components/Sun';
 import AirCoverIcon from '../icons/components/Air_Cover';
+import { motion } from 'framer-motion';
 
-const CardManager = ({ selectedDay }) => {
+const CardManager = ({ hourlyForecast, selectedDay }) => {
     const { forecastArr, secondSlideData } = useContext(WeatherContext);
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -121,10 +122,15 @@ const CardManager = ({ selectedDay }) => {
 
         if(selectedDay) setUpForecastDataArray();
 
-    }, [selectedDay]);
+    }, [selectedDay, forecastArr.current, hourlyForecast]);
     
     return (
-        <div className={styles.cards_container}>
+        <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }} 
+        className={styles.cards_container}>
             <InfoCard 
                 info={selectedDay.info} 
                 temp={selectedDay.temperature} 
@@ -134,7 +140,7 @@ const CardManager = ({ selectedDay }) => {
             {data.map((item) => (
                 <Card data={item} key={item.id} />
             ))}
-        </div>
+        </motion.div>
     );
 };
 

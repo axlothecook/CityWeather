@@ -6,6 +6,8 @@ import ArrowUp from './icons/components/Arrow_Up';
 
 const TextContainer = () => {
     const { weatherAnimations, secondSlideData } = useContext(WeatherContext);
+    // console.log('secondSlideData:');
+    // console.log(secondSlideData)
     const txtClr = useRef();
     txtClr.current = weatherAnimations.isItDay ? 'black' : '#ccc';
 
@@ -13,7 +15,7 @@ const TextContainer = () => {
         <div className={styles.text_container}>
             <div className={styles.city_country_text_container}>
                 <h1 style={{color: `${txtClr.current}`}}>{secondSlideData.current.city}</h1>
-                <h3 style={{color: `${txtClr.current}`}}>{secondSlideData.current.country}</h3>
+                <h3 style={{color: `${txtClr.current}`}}>{secondSlideData.current.country === null ? '' : secondSlideData.current.country}</h3>
             </div>
             <div className={styles.temperature_wrapper}>
                 <div className={styles.current_temperature_wrapper}>

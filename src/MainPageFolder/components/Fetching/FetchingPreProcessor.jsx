@@ -45,7 +45,6 @@ import DrizzleAndLightRainGoogleIcon from "../../google-weather-icons/components
 import FreezingAndHeavyRainGoogleIcon from "../../google-weather-icons/components/Freezing_Heavy_Rain";
 import ThunderstormGoogleIcon from "../../google-weather-icons/components/Thunderstorm";
 import useImageLink from "./FetchImages";
-import { APIKeysContext } from "../Contexts";
 import useVideoLink from "./FetchVideos";
 
 const getAnimations = (
@@ -84,7 +83,6 @@ const getAnimations = (
                     },
                     thirdSlide: {
                         background: 'linear-gradient(to bottom, rgb(156, 219, 255), rgba(13, 59, 77, 1))',
-                        animation: null
                     }
                 };
             } else {
@@ -219,116 +217,122 @@ const getAnimations = (
         setWeatherAnimations(animationsObj.current);
     };
 
-    function getStillIcons(array) {
-        array.current.map((day) => {
-            if (day.info.conditions.includes('Clear')) {
-                if(animationsObj.current.isItDay) {
-                    day.info.iconSmall = <ClearDayGoogleIcon isBig={false} />;
-                    day.info.iconBig = <ClearDayGoogleIcon isBig={true} />;
-                } else {
-                    day.info.iconSmall = <ClearNightGoogleIcon isBig={false} />;
-                    day.info.iconBig = <ClearNightGoogleIcon isBig={true} />;
-                };
-            } else if (day.info.conditions.includes('unny')) {
+    function getStillIcons(length, day) {
+        if (day.info.conditions.includes('Clear')) {
+            if(animationsObj.current.isItDay) {
                 day.info.iconSmall = <ClearDayGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <ClearDayGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Dust storm')
-                || day.info.conditions.includes('Haze')) {
-                day.info.iconSmall = <DustStormGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <DustStormGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Sky')) {
-                if(animationsObj.current.isItDay) {
-                    day.info.iconSmall = <MostlyCloudyDayGoogleIcon isBig={false} />;
-                    if(array.current.length === 15) day.info.iconBig = <MostlyCloudyDayGoogleIcon isBig={true} />;
-                } else {
-                    day.info.iconSmall = <MostlyCloudyNightGoogleIcon isBig={false} />;
-                    if(array.current.length === 15) day.info.iconBig = <MostlyCloudyNightGoogleIcon isBig={true} />;
-                };
-            }   else if (day.info.conditions.includes('Ice')) {
-                day.info.iconSmall = <IceGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <IceGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Hail')) {
-                day.info.iconSmall = <HailGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <HailGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Diamond Dust')) {
-                day.info.iconSmall = <DiamondDustGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <DiamondDustGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Fog')) {
-                day.info.iconSmall = <FogGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <FogGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('ind')) {
-                day.info.iconSmall = <WindGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <WindGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Mist')) {
-                day.info.iconSmall = <MistGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <MistGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Smoke')) {
-                day.info.iconSmall = <SmokeGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <SmokeGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Funnel')
-                || day.info.conditions.includes('Tornado')) {
-                day.info.iconSmall = <TornadoGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <TornadoGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Cloudy')
-                || day.info.conditions.includes('Overcast')
-                || day.info.conditions.includes('Precipitation')) {
-                day.info.iconSmall= <CloudyGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig= <CloudyGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Rain And Snow')
-                || day.info.conditions.includes('Squalls')) {
-                day.info.iconSmall = <MixOfRainAndSnowGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <MixOfRainAndSnowGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Blowing')) {
-                day.info.iconSmall = <BlizzardGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <BlizzardGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Snow Showers')) {
-                day.info.iconSmall = <SnowShowersGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <SnowShowersGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Heavy Snow')) {
-                day.info.iconSmall = <HeavySnowGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <HeavySnowGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Snow')) {
-                day.info.iconSmall = <SnowGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <SnowGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Drizzle') 
-                    || day.info.conditions.includes('Light Rain')) {
-                day.info.iconSmall = <DrizzleAndLightRainGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <DrizzleAndLightRainGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Rain') 
-                    || day.info.conditions.includes('Freezing')) {
-                day.info.iconSmall = <FreezingAndHeavyRainGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <FreezingAndHeavyRainGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Thunder')) {
-                day.info.iconSmall = <ThunderstormGoogleIcon isBig={false} />;
-                if(array.current.length === 15) day.info.iconBig = <ThunderstormGoogleIcon isBig={true} />;
-            } else if (day.info.conditions.includes('Partially cloudy')) {
-                if(animationsObj.current.isItDay) {
-                    day.info.iconSmall = <PartialCloudyDayGoogleIcon isBig={false} />;
-                    if(array.current.length === 15) day.info.iconBig = <PartialCloudyDayGoogleIcon isBig={true} />;
-                } else {
-                    day.info.iconSmall = <PartialCloudyNightGoogleIcon isBig={false} />;
-                    if(array.current.length === 15) day.info.iconBig = <PartialCloudyNightGoogleIcon isBig={true} />;
-                };
+                day.info.iconBig = <ClearDayGoogleIcon isBig={true} />;
+            } else {
+                day.info.iconSmall = <ClearNightGoogleIcon isBig={false} />;
+                day.info.iconBig = <ClearNightGoogleIcon isBig={true} />;
             };
-        });
+        } else if (day.info.conditions.includes('unny')) {
+            day.info.iconSmall = <ClearDayGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <ClearDayGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Dust storm')
+            || day.info.conditions.includes('Haze')) {
+            day.info.iconSmall = <DustStormGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <DustStormGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Sky')) {
+            if(animationsObj.current.isItDay) {
+                day.info.iconSmall = <MostlyCloudyDayGoogleIcon isBig={false} />;
+                if(length === 15) day.info.iconBig = <MostlyCloudyDayGoogleIcon isBig={true} />;
+            } else {
+                day.info.iconSmall = <MostlyCloudyNightGoogleIcon isBig={false} />;
+                if(length === 15) day.info.iconBig = <MostlyCloudyNightGoogleIcon isBig={true} />;
+            };
+        }   else if (day.info.conditions.includes('Ice')) {
+            day.info.iconSmall = <IceGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <IceGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Hail')) {
+            day.info.iconSmall = <HailGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <HailGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Diamond Dust')) {
+            day.info.iconSmall = <DiamondDustGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <DiamondDustGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Fog')) {
+            day.info.iconSmall = <FogGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <FogGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('ind')) {
+            day.info.iconSmall = <WindGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <WindGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Mist')) {
+            day.info.iconSmall = <MistGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <MistGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Smoke')) {
+            day.info.iconSmall = <SmokeGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <SmokeGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Funnel')
+            || day.info.conditions.includes('Tornado')) {
+            day.info.iconSmall = <TornadoGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <TornadoGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Cloudy')
+            || day.info.conditions.includes('Overcast')
+            || day.info.conditions.includes('Precipitation')) {
+            day.info.iconSmall= <CloudyGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig= <CloudyGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Rain And Snow')
+            || day.info.conditions.includes('Squalls')) {
+            day.info.iconSmall = <MixOfRainAndSnowGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <MixOfRainAndSnowGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Blowing')) {
+            day.info.iconSmall = <BlizzardGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <BlizzardGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Snow Showers')) {
+            day.info.iconSmall = <SnowShowersGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <SnowShowersGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Heavy Snow')) {
+            day.info.iconSmall = <HeavySnowGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <HeavySnowGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Snow')) {
+            day.info.iconSmall = <SnowGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <SnowGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Drizzle') 
+                || day.info.conditions.includes('Light Rain')) {
+            day.info.iconSmall = <DrizzleAndLightRainGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <DrizzleAndLightRainGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Rain') 
+                || day.info.conditions.includes('Freezing')) {
+            day.info.iconSmall = <FreezingAndHeavyRainGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <FreezingAndHeavyRainGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Thunder')) {
+            day.info.iconSmall = <ThunderstormGoogleIcon isBig={false} />;
+            if(length === 15) day.info.iconBig = <ThunderstormGoogleIcon isBig={true} />;
+        } else if (day.info.conditions.includes('Partially cloudy')) {
+            if(animationsObj.current.isItDay) {
+                day.info.iconSmall = <PartialCloudyDayGoogleIcon isBig={false} />;
+                if(length === 15) day.info.iconBig = <PartialCloudyDayGoogleIcon isBig={true} />;
+            } else {
+                day.info.iconSmall = <PartialCloudyNightGoogleIcon isBig={false} />;
+                if(length === 15) day.info.iconBig = <PartialCloudyNightGoogleIcon isBig={true} />;
+            };
+        };
     }
 
     function setUpText() {
-        let temp = forecastArr.current[0].info.place.split(' ');
-        let counter = 0;
-        temp.map((word) => {
-            if(word.includes(',')) {
-                counter++;
-                if(counter === 1) {
-                    let index = temp.indexOf(word);
-                    secondSlideData.current = {
-                        ...secondSlideData.current,
-                        city: temp.slice(0, (index + 1)).join(' '),
-                        country: temp.slice((index + 1), temp.length).join(' ')
+        if(/\s/g.test(forecastArr.current[0].info.place)) {
+            let temp = forecastArr.current[0].info.place.split(' ');
+            let counter = 0;
+            temp.map((word) => {
+                if(word.includes(',')) {
+                    counter++;
+                    if(counter === 1) {
+                        let index = temp.indexOf(word);
+                        secondSlideData.current = {
+                            ...secondSlideData.current,
+                            city: temp.slice(0, (index + 1)).join(' '),
+                            country: temp.slice((index + 1), temp.length).join(' ')
+                        };
                     };
                 };
+            });
+        } else {
+            secondSlideData.current = {
+                ...secondSlideData.current,
+                city: forecastArr.current[0].info.place,
+                country: null
             };
-        });
+        }
         secondSlideData.current = {
             ...secondSlideData.current,
             conditions: forecastArr.current[0].info.conditions,
@@ -341,13 +345,22 @@ const getAnimations = (
         // console.log(secondSlideData.current);
     };
 
+    function setUpStillIcons() {
+        forecastArr.current.map((day) => {
+            getStillIcons(forecastArr.current.length, day);
+            day.hours.map((hour) => {
+                getStillIcons(day.hours.length, hour);
+            });
+        });
+    };
+
+
     getAnimatedIcons();
-    getStillIcons(forecastArr);
-    setUpText();  
+    setUpText(); 
+    setUpStillIcons(); 
 };
 
 const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => {
-    const { GOOGLE_API_KEY } = useContext(APIKeysContext);
     const latitude = useRef(null);
     const longitude = useRef(null);
     if (selectedPlace) {
@@ -355,30 +368,38 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
         longitude.current = selectedPlace.geometry.location.lng();
     };
     let { currentWeather, loadingWeatherData, errorWeatherData } = useWeatherData(shouldRefetch, latitude.current, longitude.current);
-    let { photoArr, loadingPhotos, errorPhotos } = useImageLink(selectedPlace.place_id, GOOGLE_API_KEY);
-    let { videoArr, loadingVideos, errorVideos } = useVideoLink(latitude.current, longitude.current, GOOGLE_API_KEY);
+    let { photoArr, loadingPhotos, errorPhotos } = useImageLink(selectedPlace.place_id);
+    let { videoArr, loadingVideos, errorVideos } = useVideoLink(latitude.current, longitude.current);
     const forecastArr = useRef([]);
     const animationsObj = useRef([]);
     const secondSlideData = useRef({});
-    const loadingData = useRef(false);
-    const errorFetching = useRef(false);
-
+    const loadingWeatherDataRef = useRef(false);
+    const errorFetchingWeatherDataRef = useRef(false);
+    const loadingPhotosRef = useRef(false);
+    const errorPhotosRef = useRef(false);
+    const loadingVideosRef = useRef(false);
+    const errorFetchingVideosRef = useRef(false);
+    
     useEffect(() => {
-        if (loadingWeatherData.current || loadingPhotos.current || loadingVideos.current) {
-            loadingData.current = true;
-        } else loadingData.current = false;
+        (loadingWeatherData.current) ? loadingWeatherDataRef.current = true : loadingWeatherDataRef.current = false;
+        (loadingPhotos.current) ? loadingPhotosRef.current = true : loadingPhotosRef.current = false;
+        (loadingVideos.current) ? loadingVideosRef.current = true : loadingVideosRef.current = false;
 
-        if (errorWeatherData.current) {
-            errorFetching.current = errorWeatherData.current;
-        } else if (errorPhotos.current) {
-            errorFetching.current = errorPhotos.current;
-        } else if (errorVideos.current) {
-            errorFetching.current = errorVideos.current;
-        } else errorFetching.current = false;
-    }, [loadingWeatherData, loadingPhotos, loadingVideos, errorWeatherData, errorPhotos, errorVideos]);
+        (errorWeatherData.current) ? errorFetchingWeatherDataRef.current.message = errorWeatherData.current : errorFetchingWeatherDataRef.current = false;
+        (errorPhotos.current) ? errorPhotosRef.current = errorPhotos.current.message : errorPhotosRef.current = false;
+        (errorVideos.current) ? errorFetchingVideosRef.current = errorVideos.current.message : errorFetchingVideosRef.current = false;
+
+    }, [loadingWeatherData.current, 
+        loadingPhotos.current, 
+        loadingVideos.current, 
+        errorWeatherData.current, 
+        errorPhotos.current, 
+        errorVideos.current]
+    );
 
     // console.log('currentWeather:')
     // console.log(currentWeather)
+    // console.log(selectedPlace)
 
     const findDay = (date) => {
         let temp = new Date(date);
@@ -405,6 +426,7 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
 
     useEffect(() => {
         function fillForecastArr() {
+            forecastArr.current = [];
             currentWeather.days.map((day) => {
                 let counter = 0;
                 let tempArr = [];
@@ -421,21 +443,31 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
                             },
 
                             temperature: {
+                                name: 'Temperature',
                                 current: hour.temp,
                                 feelsLike: hour.feelslike
                             },
 
-                            uvIndex: hour.uvindex,
+                            uvIndex: {
+                                name: 'UV Index',
+                                uvIndex: hour.uvindex,
+                            },
 
-                            precipitationProbability: hour.precipprob,
+                            precip: {
+                                name: 'Precipitation',
+                                fullName: 'Precipitation Probability',
+                                prob: hour.precipprob,
+                            },
 
                             wind: {
+                                name: 'Wind',
                                 speed: hour.windspeed,
                                 direction: hour.winddir,
                                 visibility: hour.visibility,
                             },
 
                             airCover: {
+                                name: 'Air Cover',
                                 humidity: hour.humidity,
                                 dew: hour.dew,
                                 pressure: hour.pressure,
@@ -498,8 +530,8 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
                 ];
             });
 
-            // console.log('forecastArr.current:');
-            // console.log(forecastArr.current);
+            // console.log('forecastArr:')
+            // console.log(forecastArr)
         };
 
         if(currentWeather) fillForecastArr();
@@ -522,8 +554,12 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
         photoArr,
         videoArr, 
         secondSlideData, 
-        loadingData,
-        errorFetching
+        loadingWeatherDataRef,
+        errorFetchingWeatherDataRef,
+        loadingPhotosRef,
+        errorPhotosRef,
+        loadingVideosRef,
+        errorFetchingVideosRef
     };
 };
 

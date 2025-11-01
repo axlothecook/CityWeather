@@ -2,15 +2,14 @@ import { useState, useRef, useEffect, useContext } from 'react';
 import { APIKeysContext } from '../Contexts';
 
 const useWeatherData = (shouldRefetch, latitude, longitude) => {
+    const { VISUAL_CROSSING_API_KEY } = useContext(APIKeysContext);
     const [currentWeather, setCurrentWeather] = useState(null);
     const loadingWeatherData = useRef(false);
     const errorWeatherData = useRef(null);
-    const { VISUAL_CROSSING_API_KEY } = useContext(APIKeysContext);
 
     useEffect(() => {
         const fetchData = async() => {
             shouldRefetch.current = false;
-            loadingWeatherData.current = true;
             try {
                 loadingWeatherData.current = true;
                 fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude},${longitude}?key=${VISUAL_CROSSING_API_KEY}&unitGroup=metric`, {mode: 'cors'})
@@ -18,7 +17,10 @@ const useWeatherData = (shouldRefetch, latitude, longitude) => {
                 .then((response) => {
                     setCurrentWeather(response);
                 })
-                .catch((e) => console.log(`Fetch Weather Data Error: ${e}`));
+                .catch((e) => {
+                    console.log(`Fetch Weather Data Error: ${e}`);
+                    errorWeatherData.current = e;
+                });
             } catch (err) {
                 setCurrentWeather(null);
                 errorWeatherData.current = err;

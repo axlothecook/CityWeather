@@ -6,14 +6,11 @@ import SlideTwo from './components/Slide_Two/Slide_Two';
 import SlideThree from './components/Slide_Three/Slide_Three';
 import usePreProcessor from './components/Fetching/FetchingPreProcessor';
 import SlideFour from './components/Slide_Four/Slide_Four';
-// import API_KEY from '../../.env';
-//process.env.REACT_APP_GOOGLEMAPS_API_KEY
-// const API_KEY = globalThis.GOOGLE_MAPS_API_KEY;
+import BlobComponent from './components/Blob/Blob';
+import MessageComponent from './components/Loading and Error/Message';
 
 const MainPage = () => {
     const [selectedPlace, setSelectedPlace] = useState(false);
-    const [videosArr, setVideosArr] = useState([]);
-    const [imagesArr, setImagesArr] = useState([]);
     const [weatherAnimations, setWeatherAnimations] = useState({
         secondSlide: {
             icon: null,
@@ -25,36 +22,48 @@ const MainPage = () => {
             animation: null
         }
     });
-    const countRef = useRef(0);
-    const xCoordRef = useRef(0);
-    const yCoordRef = useRef(0);
     const shouldRefetch = useRef(false);
+    const indicatorRef = useRef(false);
 
     let { 
         forecastArr, 
         photoArr,
         videoArr, 
         secondSlideData, 
-        loadingData,
-        errorFetching
+        loadingWeatherDataRef,
+        errorFetchingWeatherDataRef,
+        loadingPhotosRef,
+        errorPhotosRef,
+        loadingVideosRef,
+        errorFetchingVideosRef
     } = usePreProcessor(shouldRefetch, selectedPlace, setWeatherAnimations);
-
-    console.log('forecastArr:')
-    console.log(forecastArr)
 
     return (
         <div className={selectedPlace ? styles.outerWrapper : ''}>
             <div className={selectedPlace ? styles.wrapperSelection : styles.wrapperNoSelection}>
-                <WeatherContext value={{ setSelectedPlace, shouldRefetch }}>
+                <BlobComponent selectedPlace={selectedPlace} indicatorRef={indicatorRef} />
+                <WeatherContext value={{ indicatorRef, setSelectedPlace, shouldRefetch }}>
                     <SlideOne />
                 </WeatherContext>
-                {loadingData.current && <h1>loading</h1>}
-                {errorFetching.current && <h1>error : {errorFetching.current}</h1>}
-                <WeatherContext value={{ forecastArr, weatherAnimations, secondSlideData }}>
-                    {selectedPlace && <SlideTwo />}
-                    {selectedPlace && <SlideThree />}
-                    <PhotosAndVideosContext value={{ photoArr, videoArr }}>
-                        {selectedPlace && <SlideFour />}
+                {(loadingWeatherDataRef.current || errorFetchingWeatherDataRef.current) && 
+                    <MessageComponent 
+                        loading={loadingWeatherDataRef.current} 
+                        error={errorFetchingWeatherDataRef.current} 
+                    />
+                }
+                <WeatherContext value={{ indicatorRef, setSelectedPlace, shouldRefetch, forecastArr, weatherAnimations, secondSlideData }}>
+                    {forecastArr.current.length !== 0 && <SlideTwo />}
+                    {forecastArr.current.length !== 0 && <SlideThree />}
+                    <PhotosAndVideosContext 
+                        value={{ 
+                            photoArr, 
+                            videoArr, 
+                            loadingPhotosRef, 
+                            errorPhotosRef, 
+                            loadingVideosRef, 
+                            errorFetchingVideosRef 
+                        }}>
+                        {forecastArr.current.length !== 0 && <SlideFour />}
                     </PhotosAndVideosContext>
                 </WeatherContext>
             </div>

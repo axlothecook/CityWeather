@@ -2,6 +2,8 @@
     /* border: 3px solid green; */
     position: relative;
     display: flex;
+    animation: appear linear;
+    animation-timeline: scroll();
 }
 
 .scroll_container {
@@ -20,13 +22,13 @@
     display: flex;
     align-items: center;
     overflow-x: auto;
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     background-color: rgb(138, 180, 248);
     overflow-x: scroll;
     height: 150px;
     max-width: 100.8rem;
-    /* border: none;
-    border-radius: 1rem; */
+    border: none;
+    border-radius: 1rem;
 }
 
 .card {
@@ -50,14 +52,6 @@
     border-radius: 0.4rem;
     cursor: pointer;
     color: #fbfefe;
-}
-
-.card_btn h4 {
-    font-weight: 100;
-}
-
-.card_btn h4:last-of-type {
-    font-weight: 600;
 }
 
 .card_btn:hover {
@@ -112,14 +106,27 @@
     right: -2%;
 }
 
+@keyframes appear {
+    0% {
+        opactiy: 0;
+        scale: 0.1;
+    }
+
+    65% {
+        opactiy: 1;
+        scale: 1;
+    }
+}
+
+
 @media only screen and (max-width: 2000px) {
     .scroll_container_child_daily_forecast {
         width: fit-content;
     }
 
-    .left_btn_visible, .right_btn_visible {
+    /* .left_btn_visible, .right_btn_visible {
         visibility: hidden;
-    }
+    } */
 }
 
 /* medium >= 768px */

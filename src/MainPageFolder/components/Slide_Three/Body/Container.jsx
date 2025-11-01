@@ -4,37 +4,31 @@ import styles from './Container.module.css';
 import CardManager from '../Weather Card/CardManager';
 import { WeatherContext } from '../../Contexts';
 import ChartsWrapper from '../Charts/Charts_Wrapper';
+import { AnimatePresence } from 'framer-motion';
 
 const Container = ({ hourlyForecast }) => {
-    const { forecastArr, hourlyArr } = useContext(WeatherContext);
-    const [selectedDay, setSelectedDay] = useState();
-    const [selectedHour, setSelectedHour] = useState();
+    const { forecastArr } = useContext(WeatherContext);
+    const [selectedDay, setSelectedDay] = useState(null);
 
     useEffect(() => {
-        function setDefault () {
-            (!selectedDay && forecastArr.current) ? setSelectedDay(forecastArr.current[0]) : null;
-            // (!selectedHour && hourlyArr.current) ? setSelectedHour(hourlyArr.current[0]) : null;
+        function setUpTheDay () {
+            (forecastArr.current.length !== 0) ? setSelectedDay(forecastArr.current[0]) : null;
         };
-        setDefault();
-    }, [selectedDay, forecastArr.current, selectedHour, hourlyArr.current]);
-
-    // console.log('hourlyArr');
-    // console.log(hourlyArr);
-    // console.log('forecastArr');
-    // console.log(forecastArr.current)
+        setUpTheDay();
+    }, [forecastArr.current]);
 
     return (
-        <div className={styles.forecast_wrapper}>
-            <ScrollComponent 
-                hourlyForecast={hourlyForecast} 
-                selectedDay={selectedDay} 
-                setSelectedDay={setSelectedDay} 
-                selectedHour={selectedHour} 
-                setSelectedHour={setSelectedHour} 
-            />
-            {/* {(!hourlyForecast && selectedDay) && <CardManager selectedDay={selectedDay} />} */}
-            {hourlyForecast && <ChartsWrapper date={selectedDay.info.date} />}
-        </div>
+        <AnimatePresence mode='wait'>
+            <div className={styles.wrapper}>
+                <ScrollComponent 
+                    hourlyForecast={hourlyForecast} 
+                    selectedDay={selectedDay} 
+                    setSelectedDay={setSelectedDay} 
+                />
+                {(!hourlyForecast && selectedDay) && <CardManager selectedDay={selectedDay} hourlyForecast={hourlyForecast} />}
+                {(hourlyForecast && selectedDay) && <ChartsWrapper selectedDay={selectedDay} date={selectedDay.info.date} />}
+            </div>
+        </AnimatePresence>
     );
 };
 

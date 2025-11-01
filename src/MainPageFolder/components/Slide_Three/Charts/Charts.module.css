@@ -1,7 +1,65 @@
 .charts_wrapper {
-    border: 1px solid red;
+    width: 100%;
+    background-color: #eee;
+    border: none;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #eee;
+    gap: 1rem;
+}
+
+.charts_wrapper h1 {
+    padding-top: 0.5rem;
+    text-align: center;
+    font-weight: 100;
+}
+
+.main_chart_wrapper {
+    width: inherit;
+    height: 11rem;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+
+.main_chart_wrapper h2 {
+    padding-top: .4rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.rest_of_charts_wrapper {
+    /* border: 1px solid blue; */
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.selection_wrapper {
+    /* border: 1px solid orange; */
+    position: relative;
+}
+
+.selection_wrapper h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.select {
+    min-width: 3rem;
+    width: 15rem;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

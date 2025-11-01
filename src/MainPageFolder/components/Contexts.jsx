@@ -5,6 +5,6 @@ export const WeatherContext = createContext(null);
 export const PhotosAndVideosContext = createContext(null);
 
 export const APIKeysContext = createContext({
-    VISUAL_CROSSING_API_KEY: 'EGYDHJSZBZVFZUKTEY664TM36',
-    GOOGLE_API_KEY: 'AIzaSyBnxOTyLUp6dwVolwpt7T_ll3yEMKWDjXo',
+    VISUAL_CROSSING_API_KEY: import.meta.env.VITE_VISUAL_CROSSING_API_KEY,
+    GOOGLE_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
 });

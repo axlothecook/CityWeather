@@ -5,10 +5,29 @@
     overflow: hidden;
     background-color: oklch(14.5% 0 0);
     /* height: 100%; */
+    /* border: 3px solid blue; */
 }
 
 .container {
     position: absolute;
     z-index: 10;
     inset: 0;
+}
+
+.loading_error_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    composes: text from '../../Loading and Error/Loading_And_Error.module.css';
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_div {
+    composes: img_div from '../../Loading and Error/Loading_And_Error.module.css';
 }
