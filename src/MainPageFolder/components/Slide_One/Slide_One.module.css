@@ -1,25 +1,111 @@
-.slideOne {
+.slide_one_parent {
   /* border: 3px solid red; */
   composes: slide from '../../MainPageStyle.module.css';
-  background-color: rgb(114, 114, 180);
+  background-color: rgba(37, 50, 150);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.slide_one_child {
+  width: 70%;
+  z-index: 2;
+  /* border: 1px solid orange; */
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
 }
 
 .search_bar_container_first_slide {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 3px solid green; */
 }
 
 .search_bar_container {
-  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
-  width: 70%;
   padding: 5px;
-  border: 1px solid red;
-  margin-bottom: 6rem;
+  /* border: 1px solid red; */
+}
+
+.search_bar_container h1 {
+  font-size: 3rem;
+  background-image: linear-gradient(
+    to top, 
+    rgba(255,255,255, 1), 
+    rgba(255,255,255, .9), 
+    rgba(0, 0, 0, 0)
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.cards_container {
+  /* border: 3px solid green; */
+  height: 25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+@media only screen and (max-width:  1578px) {
+  .slide_one_child {
+    gap: 3rem;
+  }
+}
+
+@media only screen and (max-width:  1441px) {
+  .slide_one_child {
+    width: 85%
+  }
+}
+
+@media only screen and (max-width:  1280px) {
+  .cards_container {
+    height: 20rem;
+  }
+}
+
+@media only screen and (max-width:  1098px) {
+  .slide_one_child {
+    width: 95%
+  }
+
+  .cards_container {
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width:  786px) {
+  .cards_container {
+    height: 15rem;
+  }
+
+  .cards_container {
+    gap: .5rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .search_bar_container h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media only screen and (max-width: 454px) {
+  .slide_one_parent {
+    align-items: center;
+    background-color: rgb(12, 8, 54);
+  }
+
+  .cards_container {
+    height: 10rem;
+  }
 }

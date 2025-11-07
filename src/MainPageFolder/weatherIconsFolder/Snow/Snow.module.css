@@ -3,6 +3,7 @@
     --snow-cloud-scale: 0.9;
     position: relative;
     width: calc(var(--snow-cloud-scale) * 22rem);
+    height: 100%;
 }
 
 .snow_cloud {
@@ -11,7 +12,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: calc(var(--snow-cloud-scale) * 22rem);
+    height: inherit;
     width: calc(var(--snow-cloud-scale) * 22rem);
 }
 
@@ -154,5 +155,48 @@
     100%{
         transform: translateX(0px);
         transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width:  1098px) {
+    .snow_cloud::before {
+        height: calc(var(--snow-cloud-scale) * 30%);
+        width: calc(var(--snow-cloud-scale) * 25%);
+        top: 18%;
+        right: 20%;
+    }
+
+    .snow_cloud::after {
+        height: calc(var(--snow-cloud-scale) * 50%);
+        width: calc(var(--snow-cloud-scale) * 45%);
+        top: 0;
+        right: 40%;
+    }
+
+    .snowflakesContainer {
+        margin-left: 5.5rem;
+        margin-top: 5.4rem;
+    }
+}
+
+@media only screen and (max-width:  400px) {
+    .snow_cloud::before {
+        height: calc(var(--snow-cloud-scale) * 30%);
+        width: calc(var(--snow-cloud-scale) * 20%);
+        top: 18%;
+        right: 24%;
+    }
+
+    .snow_cloud::after {
+        height: calc(var(--snow-cloud-scale) * 50%);
+        width: calc(var(--snow-cloud-scale) * 35%);
+        top: 0;
+        right: 40%;
+    }
+
+    .snowflakesContainer {
+        width: 30%;
+        margin-left: 7rem;
+        margin-top: 4.2rem;
     }
 }

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styles from './Image.module.css';
 import { PhotosAndVideosContext } from "../../Contexts";
 import ImageMsgComponent from "./ImageMsg";
+import './style.css';
 
 export const DragCards = () => {
   return (
@@ -49,6 +50,7 @@ const Card = ({ containerRef, src, alt, top, left, rotate }) => {
   const [doubleClicked, setDoubleClicked] = useState(false);
 
   const updateZIndex = () => {
+    console.log('sss')
     const els = document.querySelectorAll(".drag-elements");
 
     let maxZIndex = -Infinity;
@@ -73,21 +75,15 @@ const Card = ({ containerRef, src, alt, top, left, rotate }) => {
         top,
         left,
         rotate,
-        zIndex,
-        position: 'absolute', 
-        width: doubleClicked ? '30rem' : '16rem', 
-        backgroundColor: 'oklch(92.2% 0 0)', 
-        padding: '1rem', 
-        paddingBottom: '4rem',
-        cursor: 'grab'
+        zIndex
       }}
-      className="drag-elements"
+      className='drag-elements'
       src={src}
       alt={alt}
       drag
       dragConstraints={containerRef}
       dragElastic={0.65}
-      onDoubleClick={() => setDoubleClicked(!doubleClicked)}
+      // onDoubleClick={() => setDoubleClicked(!doubleClicked)}
     />
   );
 };

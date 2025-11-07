@@ -28,16 +28,14 @@ export const VideoCarousel = () => {
 
             if (x === 0) {
             setImgIndex((pv) => {
-                if (pv === videoArr.length - 1) {
-                    return 0;
-                }
+                if (pv === videoArr.length - 1) return 0;
                 return pv + 1;
             });
             }
         }, 5000);
 
         return () => clearInterval(intervalRef);
-    }, []);
+    }, [videoArr]);
 
     const onDragEnd = () => {
         const x = dragX.get();

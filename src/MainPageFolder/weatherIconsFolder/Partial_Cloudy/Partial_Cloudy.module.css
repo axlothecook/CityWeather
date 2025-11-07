@@ -16,7 +16,7 @@
     will-change: transform;
 }
 
-/* partial cloudy - DAY */
+/* DAY */
 .partial_cloudy_cloud_day {
     composes: partial_cloudy_cloud;
     height: calc(var(--scale-sun-cloudy-day) * 12rem);
@@ -60,7 +60,7 @@
     top: 10%;
 }
 
-/* partial cloudy - NIGHT */
+/* NIGHT */
 .partial_cloudy_cloud_night {
     composes: partial_cloudy_cloud;
     height: calc(var(--scale-clear-night) * 12rem);
@@ -82,11 +82,27 @@
 
 
 @keyframes translateLeft {
-	0% { transform: translatex(40%); }
-	100% { transform: translatex(-40%); }
+	0% { 
+        transform: translatex(40%); 
+    }
+
+	100% { 
+        transform: translatex(-40%); 
+    }
 }
 
 @keyframes translateRight {
-	0% { transform: translatex(-60%); }
-	100% { transform: translatex(30%); }
+	0% { 
+        transform: translatex(-60%); 
+    }
+
+	100% { 
+        transform: translatex(30%); 
+    }
+}
+
+@media only screen and (max-width:  1098px) {
+    .partial_cloudy_cloud {
+        top: 4rem;
+    }
 }

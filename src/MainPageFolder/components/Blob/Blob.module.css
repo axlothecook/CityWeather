@@ -1,32 +1,15 @@
 .blobParentNoTransition {
-    position: absolute;
-    z-index: 1;
-    /* border: 1px solid black; */
-    animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+  position: absolute;
+  z-index: 1;
+  /* border: 1px solid black; */
+  animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
 }
 
 .blobParentTransition {
-    position: absolute;
-    z-index: 5;
-    /* border: 3px solid black; */
-    animation: expand 3s linear;
-}
-
-@keyframes expand {
-    0% {
-        width: 400px;
-        height: auto;
-    }
-
-    50% {
-        width: 200vw;
-        height: 100vh;
-    }
-
-    100% {
-        width: 400px;
-        height: auto;
-    }
+  position: absolute;
+  z-index: 5;
+  /* border: 3px solid black; */
+  animation: expand 1.5s linear;
 }
 
 .blob {
@@ -36,6 +19,7 @@
     rgba(41, 116, 221, 0.8) 40%,
     rgba(126, 26, 247, 0.8) 100%
   );
+  opacity: 1;
 }
 
 .blobNoTransition {
@@ -49,7 +33,7 @@
 
 .blobTransition {
   composes: blob;
-  animation: blobTransition 3s linear;
+  animation: blobTransition 1.5s linear, changeShapeBlob 3s linear infinite;
   filter: none;
   visibility: visible;
   background-color: rebeccapurple;
@@ -81,23 +65,24 @@
 @keyframes moveBlob {
   0%,
   100% {
-    transform: translate(4vh, 4vh);
+    transform: translate(4vw, 4vh);
   }
   20% {
-    transform: translate(55vh, 15vh);
+    transform: translate(60vw, 10vh);
   }
   35% {
-    transform: translate(95vh, 20vh);
+    transform: translate(45vw, 20vh);
   }
   50% {
-    transform: translate(55vh, 50vh);
+    transform: translate(30vw, 70vh);
   }
   65% {
-    transform: translate(80vh, 30vh);
+    transform: translate(53vw, 50vh);
   }
   80% {
-    transform: translate(45vh, 7vh);
+    transform: translate(20vw, 80vh);
   }
+  
 }
 
 @keyframes changeShapeBlob {
@@ -121,24 +106,37 @@
   }
 }
 
-/* @media (max-width: 1000px) {
-  .blob {
-    width: 300px;
+@keyframes expand {
+  0% {
+    width: 400px;
+    height: auto;
   }
 
-  @keyframes moveBlob {
-    0%,
-    100% {
-      transform: translate(20%, 10vh);
-    }
-    25% {
-      transform: translate(35%, 30vh);
-    }
-    50% {
-      transform: translate(45%, 40vh);
-    }
-    75% {
-      transform: translate(25%, 50vh);
-    }
+  50% {
+    width: 200vw;
+    height: 200vh;
   }
-} */
+
+  100% {
+    width: 400px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width:  1280px) {
+  .blobNoTransition {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width:  786px) {
+  .blobNoTransition {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 454px) {
+  .blobNoTransition {
+    width: 100px;
+  }
+}

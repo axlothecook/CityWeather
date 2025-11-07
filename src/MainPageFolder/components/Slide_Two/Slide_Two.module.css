@@ -9,11 +9,13 @@
 
 .search_bar_container_second_slide {
   width: 80%;
-  /* border: 3px solid black; */
+  height: fit-content;
+  /* border: 1px solid black; */
+  padding-right: 1.3rem;
 }
 
 .text_parent_wrapper {
-  /* border: 1px solid blue; */
+  /* border: 3px solid blue; */
   height: inherit;
 }
 
@@ -21,9 +23,8 @@
   /* border: 3px solid red; */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   gap: 2rem;
-  padding-top: 1rem;
 }
 
 .city_country_text_container {
@@ -76,4 +77,64 @@
   align-items: start;
   gap: 0.3rem;
   /* border: 1px solid red; */
+}
+
+@media only screen and (max-width:  1280px) {
+  .city_country_text_container {
+    width: 15rem;
+  }
+}
+
+@media only screen and (max-width:  786px) {
+  .city_country_text_container h1 {
+    font-size: 2rem;
+  }
+
+  .current_temperature_wrapper > div > h1 {
+    font-size: 2rem;
+  }
+
+  .temperature_wrapper div:last-of-type h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .text_container {
+    gap: 1rem;
+  }
+
+  .city_country_text_container {
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 454px) {
+  .city_country_text_container h1 {
+    font-size: 1.8rem;
+  }
+
+  .city_country_text_container h3 {
+    font-size: 1rem;
+  }
+
+  .current_temperature_wrapper > div > h1 {
+    font-size: 1.8rem;
+  }
+
+  .temperature_wrapper div:last-of-type h1 {
+    font-size: 1rem;
+  }
+
+  .max_min_container h4 {
+    font-size: .7rem;
+  }
+
+  .min_max_wrapper {
+    gap: 0.1rem;
+  }
+
+  .max_min_container {
+    gap: 0.1rem;
+  }
 }

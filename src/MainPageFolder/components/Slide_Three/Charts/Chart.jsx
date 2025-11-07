@@ -88,17 +88,19 @@ const ChartComponent = ({ chartData, onClick, name, subSelectedItem, itemArr }) 
                 />}
             </div>
 
-            <div className={styles.buttons}>
-                {itemArr && itemArr.map((item) => (
-                    <button  
-                        key={item}
-                        style={{backgroundColor: (subSelectedItem === item) ? '#f8f9fa' : ''}} 
-                        onClick={() => onClick(item)}
-                    >
-                        {item}
-                    </button>
-                ))}
-            </div>
+            {(name === 'Air Cover' || name === 'Wind') && 
+                <div className={styles.buttons}>
+                    {itemArr && itemArr.map((item) => (
+                        <button  
+                            key={item}
+                            style={{backgroundColor: (subSelectedItem === item) ? '#f8f9fa' : ''}} 
+                            onClick={() => onClick(item)}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+            }                        
         </div>
     );
 };

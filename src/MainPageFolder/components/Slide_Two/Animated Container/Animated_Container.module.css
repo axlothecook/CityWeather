@@ -10,6 +10,7 @@ body {
   height: calc(100vh / 2.3);
   display: grid;
   grid-template-columns: 0.8fr 1fr;
+  /* border: 3px solid green; */
 }
 
 /* Clear  */
@@ -107,4 +108,14 @@ body {
 .thunder_cloudy_night_bg{
   composes: container_child;
   background-image: linear-gradient(to bottom, rgba(1, 1, 48, 0.9), rgba(20, 20, 68, 0.8), rgba(0, 0, 0, 0.6));
+}
+
+@media only screen and (max-width:  1098px) {
+  .container_child {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
 }

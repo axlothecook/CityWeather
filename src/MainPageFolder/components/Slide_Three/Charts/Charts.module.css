@@ -7,10 +7,12 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    animation: appear linear;
+    animation-timeline: scroll();
 }
 
 .charts_wrapper h1 {
-    padding-top: 0.5rem;
+    padding-top: .5rem;
     text-align: center;
     font-weight: 100;
 }
@@ -28,11 +30,13 @@
     text-align: center;
 }
 
+/* check if hight works correctly */
 .rest_of_charts_wrapper {
     /* border: 1px solid blue; */
     background-color: #fff;
     padding: 1rem;
     border-radius: 1rem;
+    height: 20rem;
 }
 
 .selection_wrapper {
@@ -48,7 +52,6 @@
 }
 
 .select {
-    min-width: 3rem;
     width: 15rem;
     animation: fadeIn 0.2s ease-in-out;
 }
@@ -62,4 +65,87 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes appear {
+    0% {
+        opactiy: 0;
+        scale: 0.3;
+    }
+
+    65% {
+        opactiy: 1;
+        scale: 1;
+    }
+}
+
+@media only screen and (max-width:  1024px) {
+    .charts_wrapper h1 {
+        font-size: 1.6rem;
+    }
+
+    .main_chart_wrapper h2, .selection_wrapper h2 {
+        font-size: 1.4rem;
+    }
+
+    .select {
+        width: 12rem;
+    }
+}
+
+@media only screen and (max-width:  800px) {
+    .charts_wrapper {
+        animation: none;
+    }
+
+    .main_chart_wrapper {
+        height: 9rem;
+        /* border: 1px solid red; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rest_of_charts_wrapper {
+        /* border: 1px solid blue; */
+        height: fit-content;
+        padding: .4rem .4rem 0;
+    }
+}
+
+@media only screen and (max-width:  676px) {
+    .selection_wrapper {
+        /* border: 1px solid orange; */
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .selection_wrapper h2 {
+        position: initial;
+        transform: none;
+        font-size: 1.2rem;
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width:  400px) {
+    .charts_wrapper {
+        gap: 0;
+    }
+
+    .charts_wrapper h1 {
+        font-size: 1.4rem;
+        padding-top: .2rem;
+    }
+
+    .main_chart_wrapper {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .rest_of_charts_wrapper {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
 }

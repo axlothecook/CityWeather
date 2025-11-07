@@ -11,6 +11,7 @@ import MessageComponent from './components/Loading and Error/Message';
 
 const MainPage = () => {
     const [selectedPlace, setSelectedPlace] = useState(false);
+    const [templatePlace, setTemplatePlace] = useState(null);
     const [weatherAnimations, setWeatherAnimations] = useState({
         secondSlide: {
             icon: null,
@@ -42,7 +43,7 @@ const MainPage = () => {
         <div className={selectedPlace ? styles.outerWrapper : ''}>
             <div className={selectedPlace ? styles.wrapperSelection : styles.wrapperNoSelection}>
                 <BlobComponent selectedPlace={selectedPlace} indicatorRef={indicatorRef} />
-                <WeatherContext value={{ indicatorRef, setSelectedPlace, shouldRefetch }}>
+                <WeatherContext value={{ templatePlace, setTemplatePlace, indicatorRef, setSelectedPlace, shouldRefetch }}>
                     <SlideOne />
                 </WeatherContext>
                 {(loadingWeatherDataRef.current || errorFetchingWeatherDataRef.current) && 
