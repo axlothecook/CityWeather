@@ -40,7 +40,6 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
         if (scrollableRef) {
             containerRef.current.scrollLeft += offset;
             offsetCount.current = containerRef.current.scrollLeft;
-            // console.log('in scroll: ' + offsetCount.current);
             scrollBtns(offsetCount.current);
         };
     };
@@ -49,7 +48,6 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
         if (scrollableRef) {
             if(containerRef.current.scrollLeft <= 574) {
                 offsetCount.current = containerRef.current.scrollLeft;
-                // be careful, check if it sends value without being triggered
                 scrollBtns(offsetCount.current);
             }
         }

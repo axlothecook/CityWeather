@@ -45,3 +45,9 @@
     padding-top: 0;
   }
 }
+
+@media only screen and (max-width:  400px) {
+  .cards_container {
+    height: 29rem;
+  }
+}
