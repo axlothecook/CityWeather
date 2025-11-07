@@ -162,7 +162,7 @@
     }
 }
 
-@media only screen and (max-width:  400px) {
+@media only screen and (max-width:  470px) {
     .card_btn h4 {
         color: red;
     }
