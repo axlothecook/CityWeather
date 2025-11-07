@@ -4,6 +4,7 @@
   transform: rotate(-90deg) translateX(-100vh);
   transform-origin: top left;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: absolute;
   scrollbar-width: none;
 }
@@ -43,5 +44,13 @@
 @media only screen and (max-width:  850px) {
   .wrapperSelection {
     width: 480vw;
+  }
+}
+
+@media only screen and (max-width:  470px) {
+  .outerWrapper {
+    height: 90%;
+    overflow-x: initial;
+    border: 1px solid red;
   }
 }
