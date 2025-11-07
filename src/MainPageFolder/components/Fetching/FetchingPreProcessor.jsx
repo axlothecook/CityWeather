@@ -2,27 +2,27 @@ import { useEffect, useRef } from "react";
 import useWeatherData from "./FetchWeatherData";
 
 // works for netlify & preview, doesnt't for local host
-// import isToday from 'date-fns/isToday';
-// import isMonday from 'date-fns/isMonday';
-// import isTuesday from 'date-fns/isTuesday';
-// import isWednesday from 'date-fns/isWednesday';
-// import isThursday from 'date-fns/isThursday';
-// import isFriday from 'date-fns/isFriday';
-// import isSaturday from 'date-fns/isSaturday';
-// import isSunday from 'date-fns/isSunday';
+import isToday from 'date-fns/isToday';
+import isMonday from 'date-fns/isMonday';
+import isTuesday from 'date-fns/isTuesday';
+import isWednesday from 'date-fns/isWednesday';
+import isThursday from 'date-fns/isThursday';
+import isFriday from 'date-fns/isFriday';
+import isSaturday from 'date-fns/isSaturday';
+import isSunday from 'date-fns/isSunday';
 
 
 // uncomment for local host usage
-import { 
-    isToday, 
-    isMonday, 
-    isTuesday, 
-    isWednesday, 
-    isThursday, 
-    isFriday, 
-    isSaturday, 
-    isSunday 
-} from "date-fns";    
+// import { 
+//     isToday, 
+//     isMonday, 
+//     isTuesday, 
+//     isWednesday, 
+//     isThursday, 
+//     isFriday, 
+//     isSaturday, 
+//     isSunday 
+// } from "date-fns";    
 
 
 import ClearDay from '../../weatherIconsFolder/Clear_Day/ClearDay';
