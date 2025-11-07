@@ -16,7 +16,6 @@
     "babel-plugin-react-css-modules": "^5.2.6",
     "chart.js": "^4.5.1",
     "chartjs-plugin-datalabels": "^2.2.0",
-    "date-fns": "^4.1.0",
     "dotenv": "^17.2.2",
     "motion": "^12.23.24",
     "react": "^19.1.1",
