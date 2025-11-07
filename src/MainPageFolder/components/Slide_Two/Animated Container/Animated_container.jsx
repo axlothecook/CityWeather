@@ -6,7 +6,7 @@ const AnimatedContainer = ({ children }) => {
     const { weatherAnimations } = useContext(WeatherContext);
  
     return (
-        <div>
+        <>
             {(weatherAnimations && weatherAnimations.secondSlide.background.includes('clear')) && 
                 <div className={weatherAnimations.isItDay ? styles.clear_day_bg : styles.clear_night_bg}>
                     {children}
@@ -49,7 +49,7 @@ const AnimatedContainer = ({ children }) => {
                     {weatherAnimations.secondSlide.icon}
                 </div>
             }
-        </div>
+        </>
     );
 };
 

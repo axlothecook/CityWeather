@@ -7,7 +7,6 @@ body {
 .container_child {
   padding-top: 2rem;
   padding-left: 1rem;
-  height: calc(100vh / 2.3);
   display: grid;
   grid-template-columns: 0.8fr 1fr;
 }

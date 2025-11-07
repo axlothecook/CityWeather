@@ -50,6 +50,6 @@
 @media only screen and (max-width:  400px) {
   .outerWrapper {
     height: 100%;
-    overflow-x: visible;
+    overflow-x: scroll;
   }
 }

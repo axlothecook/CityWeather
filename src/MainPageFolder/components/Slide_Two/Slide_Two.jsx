@@ -18,7 +18,7 @@ const SlideTwo = () => {
                             <SearchBar />
                         </SearchBarWrapper>
                     </AnimatedContainer>
-                    <div className={styles.text_parent_wrapper} style={{backgroundImage: `${weatherAnimations.secondSlide.bgClr}`}}>
+                    <div style={{backgroundImage: `${weatherAnimations.secondSlide.bgClr}`}}>
                         <TextContainer />
                     </div>
                 </div>

@@ -3,18 +3,14 @@
 }
 
 .slide_Two_Child {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 }
 
 .search_bar_container_second_slide {
   width: 80%;
   height: fit-content;
   padding-right: 1.3rem;
-}
-
-.text_parent_wrapper {
-  height: inherit;
 }
 
 .text_container {
