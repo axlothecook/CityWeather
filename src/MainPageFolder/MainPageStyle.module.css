@@ -49,8 +49,6 @@
 
 @media only screen and (max-width:  470px) {
   .outerWrapper {
-    overflow-y: hidden;
     overflow-x: initial;
-    border: 1px solid red;
   }
 }
