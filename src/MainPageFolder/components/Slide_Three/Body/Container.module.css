@@ -48,7 +48,7 @@
 
 @media only screen and (max-width:  470px) {
   .cards_container {
-    height: 31rem;
+    height: 33rem;
     border: 1px solid red;
   }
 }

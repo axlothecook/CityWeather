@@ -164,6 +164,6 @@
 
 @media only screen and (max-width:  470px) {
     .card_btn h4:nth-of-type(2) {
-        font-size: .4rem;
+        font-size: .6rem;
     }
 }

@@ -49,7 +49,6 @@
 
 @media only screen and (max-width:  470px) {
   .outerWrapper {
-    height: 90%;
     overflow-x: initial;
     border: 1px solid red;
   }
