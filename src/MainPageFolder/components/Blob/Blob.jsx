@@ -5,21 +5,6 @@ const BlobComponent = ({ selectedPlace, indicatorRef }) => {
     const [blobParentClass, setBlobParentClass] = useState(styles.blobParentNoTransition);
     const [blobClass, setBlobClass] = useState(styles.blobNoTransition);
 
-    // useEffect(() => {
-    //     function positionBlob () {
-    //         var element = document.querySelector('#blobParent');
-    //         if(element) {
-    //             const position = element.getBoundingClientRect();
-    //             console.log(position)
-    //             element.style.position = 'fixed';
-    //             element.style.transformOrigin = 'center';
-    //             element.style.top = position.top + 'px';
-    //         };
-    //     };
-
-    //     positionBlob();
-    // }, [selectedPlace]);
-
     useEffect(() => {
         function changeClass () {
             setBlobParentClass(styles.blobParentTransition);

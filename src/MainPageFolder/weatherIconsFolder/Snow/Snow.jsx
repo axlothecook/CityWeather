@@ -17,7 +17,7 @@ const Snow = () => {
                 <div className={styles.snowflake}>❅</div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Snow;

@@ -37,7 +37,7 @@ const SearchBar = ({ switchTab }) => {
                 types: ["(cities)"]
             }}
         />
-    )
+    );
 };
 
 

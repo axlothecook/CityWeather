@@ -15,7 +15,7 @@ const Thunderstorm = () => {
                 <div className={styles.thunderbolt}></div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Thunderstorm;

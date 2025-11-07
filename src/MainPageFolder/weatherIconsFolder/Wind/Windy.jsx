@@ -17,7 +17,7 @@ const Windy = () => {
                 <div className={styles.bottom_wind_bar_branchoff_curve}></div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Windy;

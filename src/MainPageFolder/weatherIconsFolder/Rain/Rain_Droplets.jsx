@@ -37,7 +37,7 @@ const RainDroplets = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 export default RainDroplets;

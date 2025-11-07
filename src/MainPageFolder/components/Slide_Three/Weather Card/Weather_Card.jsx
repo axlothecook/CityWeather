@@ -1,9 +1,6 @@
 import styles from './Weather_Card.module.css';
 
 const Card = ({ data }) => {
-
-    // console.log('data:')
-    // console.log(data)
     return (
         <div className={styles.card}>
             <div className={styles.row}>

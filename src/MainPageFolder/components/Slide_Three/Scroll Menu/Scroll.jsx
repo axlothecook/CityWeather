@@ -26,7 +26,6 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
         let element = document.querySelector('#scroll_container_forecast');
         if(element) {
             const position = element.getBoundingClientRect();
-            // console.log(position)
             if (position.width === 296) {
                 return true;
             } else return false;
@@ -91,7 +90,7 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
                     right: true
                 });
             };
-        }
+        };
     };
 
     const { events } = useScrollOnDrag(containerRef, {

@@ -1,12 +1,10 @@
 .slide_Four_Parent {
-  /* border: 3px solid green; */
   flex: 1;
   width: 100vw;
   height: 100vh;
 }
 
 .slide_Four_Child {
-  /* border: 1px solid red; */
   padding: .7rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,15 +17,15 @@
 }
 
 @keyframes appear {
-    0% {
-        opacity: 0;
-        scale: 0.2;
-    }
+  0% {
+    opacity: 0;
+    scale: 0.2;
+  }
 
-    100% {
-        opacity: 1;
-        scale: 1;
-    }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }
 
 @media only screen and (max-width:  1750px) {

@@ -7,11 +7,9 @@
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  /* border: 1px solid yellow; */
 }
 
 .cards_container {
-  /* border: 2px solid orange; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: auto;

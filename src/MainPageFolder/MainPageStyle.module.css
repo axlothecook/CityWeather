@@ -4,7 +4,7 @@
   transform: rotate(-90deg) translateX(-100vh);
   transform-origin: top left;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
   position: absolute;
   scrollbar-width: none;
 }
@@ -29,13 +29,11 @@
   width: 400vw;
   transform: rotate(90deg) translateY(-100vh);
   transform-origin: top left;
-  /* border: 1px solid red; */
 }
 
 .wrapperNoSelection {
   composes: wrapper;
   width: 100vw;
-  /* border: 3px solid green; */
 }
 
 .slideThree {
@@ -43,23 +41,8 @@
   background-color: orange;
 }
 
-/* @media only screen and (max-width: 2000px) {
-  
-} */
-
-/* medium >= 768px */
-@media only screen and (max-width:  1280px) {
-  
-}
-
-/* small >= 640px */
 @media only screen and (max-width:  850px) {
   .wrapperSelection {
     width: 480vw;
   }
-}
-
-/* below small */
-@media only screen and (max-width: 640px) {
-
 }

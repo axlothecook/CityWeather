@@ -1,5 +1,4 @@
 .top_bar {
-    /* border: 1px solid black; */
     display: flex;
     justify-content: flex-start;
     gap: 40rem;
@@ -10,7 +9,6 @@
 }
 
 .top_bar_location_text {
-    /* border: 1px solid red; */
     position: absolute;
     top: 50%;
     left: 50%;

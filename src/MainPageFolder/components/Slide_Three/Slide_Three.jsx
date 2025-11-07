@@ -6,7 +6,6 @@ import { WeatherContext } from '../Contexts';
 
 const SlideThree = () => {
     const { weatherAnimations } = useContext(WeatherContext); 
-    //set to false
     const [hourlyForecast, setHourlyForecast] = useState(false);
     return (
         <div className={styles.slide_Three_Parent} style={{backgroundImage: `${weatherAnimations.thirdSlide.background}`}}>

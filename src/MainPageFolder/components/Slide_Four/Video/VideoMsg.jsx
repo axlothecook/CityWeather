@@ -3,7 +3,7 @@ import loadingGIF from '../../Loading and Error/gifs/loadingGIF.gif';
 import errorGIF from '../../Loading and Error/gifs/errorGIF.gif';
 
 const VideoMsgComponent = ({ loading, error }) => {
-    const temp = ';(';
+    const temp = ':(';
     const msg = loading ? 'Loading GIF because images are still loading' : error ? 'Error GIF because an error had occured' : null;
     
     return (

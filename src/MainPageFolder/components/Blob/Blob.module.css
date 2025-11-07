@@ -1,14 +1,12 @@
 .blobParentNoTransition {
   position: absolute;
   z-index: 1;
-  /* border: 1px solid black; */
   animation: moveBlob 18s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
 }
 
 .blobParentTransition {
   position: absolute;
   z-index: 5;
-  /* border: 3px solid black; */
   animation: expand 1.5s linear;
 }
 
@@ -28,7 +26,6 @@
   border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
   animation: changeShapeBlob 6s linear infinite, rotateBlob 12s linear infinite;
   filter: blur(50px);
-  /* border: 1px solid black; */
 }
 
 .blobTransition {

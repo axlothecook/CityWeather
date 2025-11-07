@@ -1,7 +1,6 @@
 .wind_container {
     position: relative;
     --scale-wind: 0.8;
-    /* border: 1px solid black; */
     width: 15rem;
     display: flex;
     flex-direction: column;

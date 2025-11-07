@@ -8,7 +8,7 @@ const Rain = () => {
             <div className={styles.rain_cloud_edition}></div>
             <RainDroplets />
         </div>
-    )
+    );
 };
 
 export default Rain;

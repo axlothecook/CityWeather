@@ -8,7 +8,7 @@ const Cloudy = () => {
                 <div className={styles.cloud_small_top_right}></div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Cloudy;

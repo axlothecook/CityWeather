@@ -8,7 +8,7 @@ const PartialCloudy= ({ isItDay }) => {
             {isItDay ? <ClearDay isCloudy={true} /> : <ClearNight />}
             <div className={isItDay ? styles.partial_cloudy_cloud_day : styles.partial_cloudy_cloud_night}></div>
         </div>
-    )
+    );
 };
 
 export default PartialCloudy;

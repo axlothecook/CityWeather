@@ -47,7 +47,6 @@ const Cards = () => {
 
 const Card = ({ containerRef, src, alt, top, left, rotate }) => {
   const [zIndex, setZIndex] = useState(0);
-  const [doubleClicked, setDoubleClicked] = useState(false);
 
   const updateZIndex = () => {
     console.log('sss')
@@ -83,7 +82,6 @@ const Card = ({ containerRef, src, alt, top, left, rotate }) => {
       drag
       dragConstraints={containerRef}
       dragElastic={0.65}
-      // onDoubleClick={() => setDoubleClicked(!doubleClicked)}
     />
   );
 };

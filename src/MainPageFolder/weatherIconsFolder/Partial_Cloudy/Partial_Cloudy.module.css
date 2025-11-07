@@ -1,5 +1,4 @@
 .partial_cloudy {
-    /* border: 3px solid black; */
     position: relative;
     width: fit-content;
     --scale-sun-cloudy-day: 0.85;
@@ -79,7 +78,6 @@
     width: calc(var(--scale-clear-night) * 70%);
     top: 20%;
 }
-
 
 @keyframes translateLeft {
 	0% { 

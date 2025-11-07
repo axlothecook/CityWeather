@@ -10,7 +10,6 @@ body {
   height: calc(100vh / 2.3);
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  /* border: 3px solid green; */
 }
 
 /* Clear  */

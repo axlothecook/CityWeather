@@ -1,5 +1,4 @@
 .card {
-    /* border: 1px solid greenyellow; */
     cursor: pointer;
     position: relative;
     top: 0;
@@ -31,7 +30,6 @@
     z-index: 3;
     bottom: 0;
     text-align: center;
-    /* border: 1px solid red; */
     width: stretch;
     padding: 1rem .5rem;
     background-image: linear-gradient(
@@ -47,7 +45,6 @@
     font-size: 1.5rem;
 }
 
-/* huge >= 768px */
 @media only screen and (max-width:  1578px) {
     .name_container h1 {
         font-weight: 400;
@@ -55,28 +52,24 @@
     }
 }
 
-/* large >= 768px */
 @media only screen and (max-width:  1280px) {
     .name_container h1 {
         font-size: 1.2rem;
     }
 }
 
-/* medium >= 768px */
 @media only screen and (max-width:  1098px) {
     .name_container h1 {
         font-size: 1rem;
     }
 }
 
-/* small >= 640px */
 @media only screen and (max-width:  786px) {
     .name_container h1 {
         font-size: .7rem;
     }
 }
 
-/* below small */
 @media only screen and (max-width: 640px) {
     .name_container {
         padding: .5rem;

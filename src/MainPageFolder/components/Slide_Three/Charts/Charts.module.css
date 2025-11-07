@@ -30,9 +30,7 @@
     text-align: center;
 }
 
-/* check if hight works correctly */
 .rest_of_charts_wrapper {
-    /* border: 1px solid blue; */
     background-color: #fff;
     padding: 1rem;
     border-radius: 1rem;
@@ -40,7 +38,6 @@
 }
 
 .selection_wrapper {
-    /* border: 1px solid orange; */
     position: relative;
 }
 
@@ -100,13 +97,11 @@
 
     .main_chart_wrapper {
         height: 9rem;
-        /* border: 1px solid red; */
         display: flex;
         flex-direction: column;
     }
 
     .rest_of_charts_wrapper {
-        /* border: 1px solid blue; */
         height: fit-content;
         padding: .4rem .4rem 0;
     }
@@ -114,7 +109,6 @@
 
 @media only screen and (max-width:  676px) {
     .selection_wrapper {
-        /* border: 1px solid orange; */
         position: relative;
         display: flex;
         justify-content: space-between;

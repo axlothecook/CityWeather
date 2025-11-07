@@ -1,5 +1,4 @@
 .snow {
-    /* border: 1px solid red; */
     --snow-cloud-scale: 0.9;
     position: relative;
     width: calc(var(--snow-cloud-scale) * 22rem);
@@ -7,7 +6,6 @@
 }
 
 .snow_cloud {
-    /* border: 1px solid purple; */
     composes: partial_cloudy_cloud from '../Partial_Cloudy/Partial_Cloudy.module.css';
     position: absolute;
     top: 0;
@@ -47,7 +45,6 @@
 }
 
 .snowflakesContainer {
-    /* border: 3px solid yellow; */
     position: absolute;
     width: 50%;
     height: 58%;
@@ -57,7 +54,6 @@
 }
 
 .snowflake {
-    /* border: 1px solid yellow; */
     position: absolute;
     top: 0;
     color: #fff;

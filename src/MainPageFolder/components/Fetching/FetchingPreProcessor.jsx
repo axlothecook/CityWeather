@@ -1,13 +1,29 @@
 import { useEffect, useRef } from "react";
 import useWeatherData from "./FetchWeatherData";
-import isToday from 'date-fns/isToday';
-import isMonday from 'date-fns/isMonday';
-import isTuesday from 'date-fns/isTuesday';
-import isWednesday from 'date-fns/isWednesday';
-import isThursday from 'date-fns/isThursday';
-import isFriday from 'date-fns/isFriday';
-import isSaturday from 'date-fns/isSaturday';
-import isSunday from 'date-fns/isSunday';
+
+// works for netlify & preview, doesnt't for local host
+// import isToday from 'date-fns/isToday';
+// import isMonday from 'date-fns/isMonday';
+// import isTuesday from 'date-fns/isTuesday';
+// import isWednesday from 'date-fns/isWednesday';
+// import isThursday from 'date-fns/isThursday';
+// import isFriday from 'date-fns/isFriday';
+// import isSaturday from 'date-fns/isSaturday';
+// import isSunday from 'date-fns/isSunday';
+
+
+// uncomment for local host usage
+import { 
+    isToday, 
+    isMonday, 
+    isTuesday, 
+    isWednesday, 
+    isThursday, 
+    isFriday, 
+    isSaturday, 
+    isSunday 
+} from "date-fns";    
+
 
 import ClearDay from '../../weatherIconsFolder/Clear_Day/ClearDay';
 import ClearNight from '../../weatherIconsFolder/Clear_Night/ClearNight';
@@ -305,22 +321,20 @@ const getAnimations = (
                 if(length === 15) day.info.iconBig = <PartialCloudyNightGoogleIcon isBig={true} />;
             };
         };
-    }
+    };
 
     function setUpText() {
         if(/\s/g.test(forecastArr.current[0].info.place)) {
             let temp = forecastArr.current[0].info.place.split(' ');
             let counter = 0;
             temp.map((word) => {
-                if(word.includes(',')) {
-                    counter++;
-                    if(counter === 1) {
-                        let index = temp.indexOf(word);
-                        secondSlideData.current = {
-                            ...secondSlideData.current,
-                            city: temp.slice(0, (index + 1)).join(' '),
-                            country: temp.slice((index + 1), temp.length).join(' ')
-                        };
+                counter++;
+                if(counter === 1) {
+                    let index = temp.indexOf(word);
+                    secondSlideData.current = {
+                        ...secondSlideData.current,
+                        city: temp.slice(0, (index + 1)).join(' '),
+                        country: temp.slice((index + 1), temp.length).join(' ')
                     };
                 };
             });
@@ -338,9 +352,6 @@ const getAnimations = (
             minTemp: forecastArr.current[0].temperature.minTemp,
             maxTemp: forecastArr.current[0].temperature.maxTemp
         };
-
-        // console.log('text:');
-        // console.log(secondSlideData.current);
     };
 
     function setUpStillIcons() {
@@ -351,7 +362,6 @@ const getAnimations = (
             });
         });
     };
-
 
     getAnimatedIcons();
     setUpText(); 
@@ -397,7 +407,6 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
 
     const findDay = (date) => {
         let temp = new Date(date);
-        let temp2;
         if (isToday(temp)) {
             return 'Today';
         } else if (isMonday(temp)) {
@@ -415,7 +424,6 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
         } else if (isSunday(temp)) {
             return 'Sunday';
         };
-        return temp2;
     };
 
     useEffect(() => {
@@ -523,9 +531,6 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
                     }
                 ];
             });
-
-            // console.log('forecastArr:')
-            // console.log(forecastArr)
         };
 
         if(currentWeather) fillForecastArr();
