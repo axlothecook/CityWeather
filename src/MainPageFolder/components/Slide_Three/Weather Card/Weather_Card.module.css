@@ -4,8 +4,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: white;
-    border: none;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, .3),
+        rgba(0, 0, 0, .2)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.027);
     border-radius: 2rem;
     padding: 1.3rem 1.6rem;
     animation: appear linear;
@@ -28,11 +34,6 @@
     height: 2.7rem;
     position: relative;
     /* border: 1px solid red; */
-}
-
-.corner h3 {
-    position: absolute;
-    font-size: 1.6rem;
 }
 
 .corner h1 {
@@ -121,8 +122,16 @@
     font-size: 3rem;
 }
 
+.info_card_first_child h2:first-of-type {
+    font-weight: 100;
+}
+
 .info_card_first_child h2:nth-of-type(2) {
     font-weight: 600;
+}
+
+.info_card_first_child h3 {
+    font-weight: 300;
 }
 
 .info_card_last_child {
@@ -145,5 +154,66 @@
     65% {
         opactiy: 1;
         scale: 1;
+    }
+}
+
+@media only screen and (max-width:  1835px) {
+  .card {
+    width: 25rem;
+    height: 13rem;
+  }
+}
+
+@media only screen and (max-width:  1450px) {
+    .card {
+        animation: none;
+    }
+    
+    .info_card_first_child h1 {
+        font-size: 2.6rem;
+    }
+
+    .info_card_first_child h2 {
+        font-size: 1.4rem;
+    }
+
+    .corner h1 {
+        font-size: 1.5rem;
+    }
+
+    .corner div > h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width:  624px) {
+    .card {
+        width: 16rem;
+        height: 10rem;
+        padding: 1rem;
+    }
+
+    .info_card_first_child {
+        gap: .4rem;
+    }
+
+    .info_card_first_child h1 {
+        font-size: 2rem;
+    }
+
+    .info_card_first_child h2 {
+        font-size: .9em;
+    }
+
+    .info_card_first_child h3 {
+        font-size: .7em;
+    }
+
+    .corner h1 {
+        font-size: .9rem;
+    }
+
+    .corner div > h1 {
+        font-size: 1.2rem;
     }
 }

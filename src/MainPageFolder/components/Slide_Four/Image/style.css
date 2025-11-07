@@ -1,0 +1,32 @@
+.drag-elements {
+    position: absolute;
+    width: 16rem;
+    background-color: oklch(92.2% 0 0);
+    padding: 1rem;
+    padding-bottom: 4rem;
+    cursor: grab;
+}
+
+@media only screen and (max-width:  1450px) {
+    .drag-elements {
+        width: 13rem;
+        padding: .7rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@media only screen and (max-width:  650px) {
+    .drag-elements {
+        width: 10rem;
+        padding: .5rem;
+        padding-bottom: 2.5rem;
+    }
+}
+
+@media only screen and (max-width:  400px) {
+    .drag-elements {
+        width: 10rem;
+        padding: .5rem;
+        padding-bottom: 1.5rem;
+    }
+}

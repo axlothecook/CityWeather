@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ScrollCard from "./Scroll_Card";
 import styles from './Scroll.module.css';
 import useScrollOnDrag from "react-scroll-ondrag";
@@ -22,67 +22,48 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
     const offsetCount = useRef(0);
     const defaultSelectedDay = useRef(null);
 
-    const onScroll = (offset, side) => {
-        if (scrollableRef) {
-            if (offsetCount.current === 0 
-                || offsetCount.current === 785
-                || offsetCount.current === 800
-                || containerRef.current.scrollLeft === 1585
-            ) {
-                containerRef.current.scrollLeft += offset;
-                // offsetCount.current = offsetCount.current + offset;
-                offsetCount.current = containerRef.current.scrollLeft;
-                // be careful, check if it sends value without being triggered
-                // scrollBtns(containerRef.current.scrollLeft);
-            } else {
-                if (offsetCount.current < 800) {
-                    if(side === 'left') {
-                        containerRef.current.scrollLeft = 0;
-                    } else {
-                        if(offsetCount.current !== 800) {
-                            let temp = 800 - offsetCount.current;
-                            containerRef.current.scrollLeft += temp;
-                        } else containerRef.current.scrollLeft += offsetCount.current;
-                    }
-                } else {
-                    if(side === 'left') {
-                        containerRef.current.scrollLeft = 800;
-                    } else {
-                        containerRef.current.scrollLeft = 1585;
-                        // console.log(containerRef.current.scrollLeft)
-                        // console.log('ddd')
-                    }
-                };
+    function presetScroll () {
+        let element = document.querySelector('#scroll_container_forecast');
+        if(element) {
+            const position = element.getBoundingClientRect();
+            // console.log(position)
+            if (position.width === 296) {
+                return true;
+            } else return false;
+        };
+    };
 
-                offsetCount.current = containerRef.current.scrollLeft;
-                // be careful, check if it sends value without being triggered
-                // scrollBtns(containerRef.current.scrollLeft);
-            }
+    useEffect(() => {
+        if(presetScroll()) scrollBtns(0);
+    }, []);
+
+    const onScroll = (offset) => {
+        if (scrollableRef) {
+            containerRef.current.scrollLeft += offset;
+            offsetCount.current = containerRef.current.scrollLeft;
+            // console.log('in scroll: ' + offsetCount.current);
+            scrollBtns(offsetCount.current);
         };
     };
 
     const onDrag = () => {
         if (scrollableRef) {
-            // console.log('current: ' + containerRef.current.scrollLeft);
-            // console.log('offset: ' + offsetCount.current);
-
-            if(containerRef.current.scrollLeft !== 1585) {
+            if(containerRef.current.scrollLeft <= 574) {
                 offsetCount.current = containerRef.current.scrollLeft;
                 // be careful, check if it sends value without being triggered
-                // scrollBtns(containerRef.current.scrollLeft);
+                scrollBtns(offsetCount.current);
             }
         }
     }
 
     function scrollBtns(data) {
-        console.log('data: ' + data)
-        if (typeof data === "number") {
+        if (typeof data === 'number') {
             if (data === 0) {
                 setForecastDaysBtns({
                     left: true,
                     right: false
                 });
-            } else if (data === 1585) {
+            } else if (data === 574) {
                 setForecastDaysBtns({
                     left: false,
                     right: true
@@ -95,19 +76,16 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
             };
         } else {
             if (data === 'left') {
-                // console.log('left should be disabled')
                 setHoursDaysBtns({
                     left: true,
                     right: false
                 });
             } else if (data === 'both') {
-                // console.log('both valid')
                 setHoursDaysBtns({
                     left: false,
                     right: false
                 });
             } else if (data === 'right') {
-                // console.log('right should be disabled')
                 setHoursDaysBtns({
                     left: false,
                     right: true
@@ -137,12 +115,12 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
     };
 
   return (
-    <div className={styles.scroll_container}>
+    <div className={styles.wrapper}>
         {!hourlyForecast && <button 
             className={forecastDaysBtns.left ? styles.left_btn_not_visible : styles.left_btn_visible} 
             fontSize={20} 
             onClick={() => {
-                onScroll(-800, 'left'); 
+                onScroll(-288); 
             }} 
             disabled={forecastDaysBtns.left}
         >
@@ -159,65 +137,66 @@ const ScrollComponent = ({ hourlyForecast, selectedDay, setSelectedDay, runScrol
         >
             <ArrorLeft />
         </button>}
-        <div className={styles.scroll_container_child_daily_forecast}>
-            {!hourlyForecast && 
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }} 
-                    {...events} 
-                    ref={containerRef}
-                    className={styles.main} 
-                    onMouseLeave={() => {
-                        if (!hourlyForecast) onDrag();
-                    }}
-                >
-                    {forecastArr.current.map((day) => {
-                        (selectedDay === day) ? defaultSelectedDay.current = true : defaultSelectedDay.current = false;
-                        return <ScrollCard 
-                                key={day.info.date} 
-                                dayInfo={day.info} 
-                                temp={day.temperature.current}
-                                onDrag={onDrag}
-                                defaultSelected = {defaultSelectedDay.current}
-                                onClick={() => setSelectedDay(day)}
-                                />;
-                    })}
-                </motion.div>
-            }
-
-            {(hourlyForecast && selectedDay) && 
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }} 
-                    {...events} 
-                    ref={containerRef}
-                    className={styles.main} 
-                    onMouseLeave={() => {
-                        if (!hourlyForecast) onDrag();
-                    }}
-                >
-                    {selectedDay.hours.map((hour) => {
-                        return <ScrollCard 
-                                key={hour.id} 
-                                dayInfo={hour.info} 
-                                temp={hour.temperature.current}
-                                onDrag={onDrag}
-                                defaultSelected={null}
-                                />;
-                    })}
-                </motion.div>
-            }
+        {!hourlyForecast && 
+        <div 
+        className={styles.scroll_container_forecast} 
+        id='scroll_container_forecast' 
+        onMouseUp={() => {
+            if (presetScroll()) onDrag();
+        }}>
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }} 
+                {...events} 
+                ref={containerRef}
+                className={styles.main} 
+            >
+                {forecastArr.current.map((day) => {
+                    (selectedDay === day) ? defaultSelectedDay.current = true : defaultSelectedDay.current = false;
+                    return <ScrollCard 
+                            key={day.info.date} 
+                            dayInfo={day.info} 
+                            temp={day.temperature.current}
+                            defaultSelected = {defaultSelectedDay.current}
+                            onClick={() => setSelectedDay(day)}
+                            />;
+                })}
+            </motion.div>
         </div>
+        }
+
+        {(hourlyForecast && selectedDay) && 
+        <div 
+        className={styles.scroll_container_daily}
+        >
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }} 
+                {...events} 
+                ref={containerRef}
+                className={styles.main} 
+            >
+                {selectedDay.hours.map((hour) => {
+                    return <ScrollCard 
+                            key={hour.id} 
+                            dayInfo={hour.info} 
+                            temp={hour.temperature.current}
+                            defaultSelected={null}
+                            />;
+                })}
+            </motion.div>
+        </div>
+        }
         {!hourlyForecast &&
         <button 
             className={forecastDaysBtns.right ? styles.right_btn_not_visible : styles.right_btn_visible} 
             fontSize={20} 
             onClick={() => { 
-                onScroll(800, 'right'); 
+                onScroll(288); 
             }}
             disabled={forecastDaysBtns.right} 
         >

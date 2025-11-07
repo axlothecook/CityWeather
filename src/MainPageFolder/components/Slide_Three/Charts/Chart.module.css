@@ -31,11 +31,10 @@
 
 .general_chart {
     composes: chart;
-    height: 15rem;
+    height: 13rem;
 }
 
 .buttons {
-    border: 1px solid red;
     border: 1px solid #e9ebee;
     border-radius: 50px;
 }
@@ -45,7 +44,7 @@
     cursor: pointer;
     border: none;
     font-size: 1rem;
-    padding: 0.4rem 1rem;
+    padding: .4rem 1rem;
 }
 
 .buttons button:first-of-type {
@@ -69,4 +68,31 @@
 
 .buttons button:hover {
     background-color: #f8f9fa;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .wrapper_general {
+        gap: .7rem;
+    }
+
+    .temp_chart {
+        /* border: 1px solid green; */
+        height: 7rem;
+    }
+
+    .general_chart {
+        height: 10rem;
+    }
+}
+
+@media only screen and (max-width:  412px) {
+    .buttons button {
+        font-size: .85rem;
+        padding: .4rem .5rem;
+    }
+
+    .general_chart {
+        height: 7rem;
+    }
 }

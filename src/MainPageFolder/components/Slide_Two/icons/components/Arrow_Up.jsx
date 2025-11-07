@@ -4,7 +4,7 @@ const ArrowUp = ({ isItDay }) => {
     return (
         <svg 
             style={{fill: `${isItDay ? 'black' : '#ccc'}`}}
-            className={styles.arrow_up}
+            className={styles.arrow}
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 640 640" 
             id="arrow-up"

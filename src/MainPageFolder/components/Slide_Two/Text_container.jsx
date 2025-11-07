@@ -6,8 +6,6 @@ import ArrowUp from './icons/components/Arrow_Up';
 
 const TextContainer = () => {
     const { weatherAnimations, secondSlideData } = useContext(WeatherContext);
-    // console.log('secondSlideData:');
-    // console.log(secondSlideData)
     const txtClr = useRef();
     txtClr.current = weatherAnimations.isItDay ? 'black' : '#ccc';
 

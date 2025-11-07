@@ -1,71 +1,65 @@
-.scroll_container {
-    /* border: 3px solid green; */
+.wrapper {
+    /* border: 3px solid red; */
     position: relative;
     display: flex;
+    justify-content: center;
     animation: appear linear;
     animation-timeline: scroll();
-}
-
-.scroll_container {
-    composes: scroll_container;
-    position: relative;
-}
-
-
-.scroll_container_child_daily_forecast {
-    padding: 5px;
-    /* border: 3px solid blue; */
-    width: 30rem;
 }
 
 .main {
     display: flex;
     align-items: center;
     overflow-x: auto;
-    /* border: 3px solid purple; */
-    background-color: rgb(138, 180, 248);
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, .3),
+        rgba(0, 0, 0, .2)
+    );
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
     overflow-x: scroll;
     height: 150px;
     max-width: 100.8rem;
-    border: none;
-    border-radius: 1rem;
 }
 
 .card {
     /* border: 1px solid black; */
-    margin: 0.4rem;
+    margin: .4rem;
     border: none;
-    border-radius: 0.4rem;
+    border-radius: .4rem;
 }
 
 .card_btn {
     width: 3.4rem;
     height: 8rem;
-    padding: 0.4rem;
+    padding: .4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
-    background-color: rgb(102, 157, 246);
-    border: none;
-    border-radius: 0.4rem;
+    gap: .4rem;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: .4rem;
     cursor: pointer;
     color: #fbfefe;
 }
 
 .card_btn:hover {
-    background-color: rgb(66, 94, 138);
+    background-color: rgb(138, 180, 248);
 }
 
 .selected_card {
     composes: card_btn;
-    background-color: rgb(66, 94, 138);
+    background-color: rgb(138, 180, 248);
 }
 
 .normal_card {
     composes: card_btn;
-    background-color: rgb(102, 157, 246);
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(50px);
 }
 
 .btn {
@@ -76,7 +70,7 @@
     height: 3rem;
     border-radius: 50%;
     background-color: #eee;
-    opacity: 0.7;
+    opacity: .7;
     position: absolute;
     top: 35%;
     cursor: pointer;
@@ -84,6 +78,10 @@
 
 .btn:hover {
     opacity: 1;
+}
+
+.btn:active, .btn:focus {
+    opacity: .7;
 }
 
 .left_btn_not_visible {
@@ -94,11 +92,13 @@
 .left_btn_visible {
     composes: btn;
     left: -2%;
+    z-index: 3;
 }
 
 .right_btn_not_visible {
     composes: btn;
     visibility: hidden;
+    z-index: 3;
 }
 
 .right_btn_visible {
@@ -119,33 +119,49 @@
 }
 
 
-@media only screen and (max-width: 2000px) {
-    .scroll_container_child_daily_forecast {
-        width: fit-content;
-    }
-
-    /* .left_btn_visible, .right_btn_visible {
-        visibility: hidden;
-    } */
-}
-
-/* medium >= 768px */
-@media only screen and (max-width:  1370px) {
-    .scroll_container_child_daily_forecast {
-        width: 24.5rem;
+@media only screen and (max-width:  1750px) {
+    .scroll_container_daily {
+        /* border: 3px solid orange; */
+        width: 38.4rem;
     }
 }
 
-/* small >= 640px */
-/* @media only screen and (max-width:  768px) {
-    .scroll_container_child_daily_forecast {
-        width: 20rem;
+@media only screen and (max-width:  1280px) {
+    .scroll_container_forecast {
+        /* border: 3px solid blue; */
+        width: 18.5rem;
     }
-} */
 
-/* below small */
-@media only screen and (max-width: 640px) {
-    .scroll_container_child_daily_forecast {
-        width: fit-content;
+    .left_btn_visible {
+        left: -10%;
+    }
+
+    .right_btn_visible {
+        right: -10%;
+    }
+}
+
+@media only screen and (max-width:  800px) {
+    .wrapper {
+        animation: none;
+    }
+}
+
+@media only screen and (max-width:  700px) {
+    .scroll_container_daily {
+        width: 18.5rem;
+    }
+
+    .main {
+        height: 7.2rem;
+    }
+
+    .card {
+        margin: .3rem;
+    }
+
+    .card_btn {
+        width: 3rem;
+        height: 6.5rem;
     }
 }

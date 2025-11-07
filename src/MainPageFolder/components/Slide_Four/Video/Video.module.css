@@ -1,140 +1,146 @@
 .carousel {
-    width: inherit;
-    width: 57rem;
-    animation: appear linear;
-    animation-timeline: scroll();
-    position: relative;
-    overflow: hidden;
-    background-color: none;
+  width: 57rem;
+  animation: appear linear;
+  animation-timeline: scroll();
+  position: relative;
+  overflow: hidden;
+  background-color: none;
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-right: .5rem;
 }
 
 .carousel_child_div {
-    display: flex;
-    align-items: center;
-    cursor: grab;
+  display: flex;
+  align-items: center;
+  cursor: grab;
 }
 
 .carousel_child_div:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .video {
-    width: 57rem;
-    position: relative;
+  width: 57rem;
+  position: relative;
 }
 
 .title_div {
-    position: absolute;
-    height: 90%;
-    width: 89%;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to top, rgba(255,255,255, 1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
-    display: flex;
-    align-items: flex-end;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 4rem;
-    z-index: 3;
-    opacity: 0;
-    /* border: 1px solid green; */
+  position: absolute;
+  height: 91%;
+  width: 90%;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+      to top, 
+      rgba(255,255,255, 1), 
+      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0)
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 0 3rem 4rem;
+  z-index: 3;
+  opacity: 0;
+  /* border: 1px solid green; */
 }
 
 .title_div:hover {
-    opacity: 1;
-    transition: opacity 1s ease-out;
+  opacity: 1;
+  transition: opacity 1s ease-out;
 }
 
 .title_div h1 {
-    color: black;
-    font-size: 2.3rem;
+  color: black;
+  font-size: 2.3rem;
 }
 
 .thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .blurred_div {
-    /* border: 1px solid red; */
-    z-index: -1;
+  /* border: 1px solid red; */
+  z-index: -1;
 }
 
 .ticking_bar {
-    padding: 0; 
-    margin: 0;
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
+  padding: 0; 
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
 .ticking_bar_btn {
-    height: 1rem;
-    border: none;
-    cursor: pointer;
-    background-color: grey;
-    padding: 0;
-    margin: 0;
+  height: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: grey;
+  padding: 0;
+  margin: 0;
 }
 
 .current_btn {
-    composes: ticking_bar_btn;
-    height: 0.7rem;
-    width: 7rem;
-    border-radius: 20px;
-    background-color: #eee;
+  composes: ticking_bar_btn;
+  height: 0.7rem;
+  width: 7rem;
+  border-radius: 20px;
+  background-color: #eee;
 }
 
 .progress {
-    animation: load 5.1s normal forwards;
-    width: 0;
-    background-color: #8f8f8f;
-    height: inherit;
-    border-radius: inherit;
+  width: 0;
+  background-color: #8f8f8f;
+  height: inherit;
+  border-radius: inherit;
+  animation: load 5.1s normal forwards;
 }
 
 .general_btn {
-    composes: ticking_bar_btn;
-    border-radius: 50%;
-    width: 1rem;
+  composes: ticking_bar_btn;
+  border-radius: 50%;
+  width: 1rem;
 }
 
 .loading_error_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    width: 57rem;
-    animation: appear linear;
-    animation-timeline: scroll();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 57rem;
+  animation: appear linear;
+  animation-timeline: scroll();
 }
 
 .text {
-    composes: text from '../../Loading and Error/Loading_And_Error.module.css';
-    justify-content: center;
-    align-items: center;
+  composes: text from '../../Loading and Error/Loading_And_Error.module.css';
+  justify-content: center;
+  align-items: center;
 }
 
 .img_div {
-    composes: img_div from '../../Loading and Error/Loading_And_Error.module.css';
+  composes: img_div from '../../Loading and Error/Loading_And_Error.module.css';
 }
 
 @keyframes appear {
-    0% {
-        opactiy: 0;
-        scale: 0.3;
-    }
+  0% {
+    opactiy: 0;
+    scale: 0.3;
+  }
 
-    65% {
-        opactiy: 1;
-        scale: 1;
-    }
+  65% {
+    opactiy: 1;
+    scale: 1;
+  }
 }
 
 @keyframes load {
@@ -147,3 +153,172 @@
   }
 }
 
+@media only screen and (max-width:  1750px) {
+  .carousel {
+    width: 45rem;
+  }
+
+  .title_div {
+    height: 95%;
+    padding: 0 3rem 2rem;
+  }
+
+  .title_div h1 {
+    font-size: 1.8rem;
+  }
+
+  .video {
+    width: 45rem;
+  }
+}
+
+@media only screen and (max-width:  1450px) {
+  .carousel {
+    width: 35rem;
+  }
+
+  .title_div {
+    padding: 0 2rem 2rem;
+  }
+
+  .title_div h1 {
+    font-size: 1.6rem;
+  }
+
+  .video {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width:  1110px) {
+  .carousel {
+    width: 57rem;
+  }
+
+  .title_div {
+    padding: 0 3rem 4rem;
+  }
+
+  .title_div h1 {
+    font-size: 2.3rem;
+  }
+
+  .video {
+    width: 57rem;
+  }
+}
+
+@media only screen and (max-width:  900px) {
+  .carousel {
+    width: 40rem;
+    justify-content: center;
+  }
+
+  .title_div {
+    height: 93%;
+    padding: 0 2rem 2rem;
+  }
+
+  .title_div h1 {
+    font-size: 1.6rem;
+  }
+
+  .video {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width:  770px) {
+  .carousel {
+    width: 30rem;
+  }
+
+  .title_div {
+    height: 93%;
+    width: 93%;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .title_div h1 {
+    font-size: 1.2rem;
+  }
+
+  .video {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width:  580px) {
+  .carousel {
+    width: 23rem;
+  }
+
+  .title_div {
+    height: 91%;
+    width: 91%;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .title_div h1 {
+    font-size: 1rem;
+  }
+
+  .video {
+    width: 23rem;
+  }
+
+  .ticking_bar {
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width:  460px) {
+  .carousel {
+    width: 18rem;
+  }
+
+  .title_div {
+    height: 91%;
+    width: 90%;
+    padding: 0 .9rem 1.2rem;
+  }
+
+  .title_div h1 {
+    font-size: .6rem;
+    font-weight: 300;
+  }
+
+  .video {
+    width: 18rem;
+  }
+
+  .general_btn {
+    height: .5rem;
+    width: .5rem;
+  }
+
+  .current_btn {
+    height: .5rem;
+    width: 4rem;
+  }
+}
+
+@media only screen and (max-width:  360px) {
+  .carousel {
+    width: 15rem;
+  }
+
+  .title_div {
+    height: 93%;
+    width: 90%;
+    padding: 0 .7rem .8rem;
+  }
+
+  .title_div h1 {
+    font-size: .5rem;
+  }
+
+  .video {
+    width: 15rem;
+  }
+}

@@ -6,15 +6,23 @@ const TopBar = ({ hourlyForecast, setHourlyForecast }) => {
     const { weatherAnimations } = useContext(WeatherContext);
     return (
         <div className={styles.top_bar}>
-            <div className={styles.sort_options}>
-                <button className={styles.btn} onClick={() => {
-                    setHourlyForecast(false);
-                }}>
+            <div className={styles.btns}>
+                <button 
+                    className={styles.btn} 
+                    style={{backgroundColor: !hourlyForecast ? 'grey' : 'rgba(255, 255, 255, 0.1)'}}
+                    onClick={() => {
+                        setHourlyForecast(false);
+                    }}
+                >
                     <h2>Forecast</h2>
                 </button>
-                <button className={styles.btn} onClick={() => {
-                    setHourlyForecast(true);
-                }}>
+                <button 
+                    className={styles.btn} 
+                    style={{backgroundColor: hourlyForecast ? 'grey' : 'rgba(255, 255, 255, 0.1)'}}
+                    onClick={() => {
+                        setHourlyForecast(true);
+                    }}
+                >
                     <h2>24 hours</h2>
                 </button>
             </div>

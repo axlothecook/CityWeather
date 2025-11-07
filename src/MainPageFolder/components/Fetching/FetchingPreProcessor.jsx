@@ -82,7 +82,7 @@ const getAnimations = (
                         bgClr: 'linear-gradient(to bottom, rgb(17, 183, 248), rgba(16, 119, 160, 1), rgba(13, 59, 77, 1))'
                     },
                     thirdSlide: {
-                        background: 'linear-gradient(to bottom, rgb(156, 219, 255), rgba(13, 59, 77, 1))',
+                        background: 'linear-gradient(to bottom, rgb(156, 219, 255), rgb(17, 183, 248), rgb(17, 183, 248), rgba(16, 119, 160, 1), rgba(13, 59, 77, 1))'
                     }
                 };
             } else {
@@ -94,7 +94,7 @@ const getAnimations = (
                         bgClr: 'linear-gradient(to bottom, rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                     },
                     thirdSlide: {
-                        background: 'linear-gradient(to bottom, rgb(0, 47, 255), rgba(23, 14, 104, 1))',
+                        background: 'linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185), rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                     }
                 };
             }
@@ -110,7 +110,7 @@ const getAnimations = (
                     bgClr: 'linear-gradient(to bottom, rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                 },
                 thirdSlide: {
-                    background: 'linear-gradient(to bottom, rgb(0, 47, 255), rgba(23, 14, 104, 1))',
+                    background: 'linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185), rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                 }
             };
         } else if(day.includes('Snow')
@@ -127,7 +127,7 @@ const getAnimations = (
                     bgClr: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(149, 157, 168, 0.8), rgba(103, 120, 126, 0.5))' : 'linear-gradient(to top, rgba(7, 7, 7, 0.7), rgba(117, 125, 136, 0.8))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(149, 157, 168, 0.8), rgba(103, 120, 126, 0.5))' : 'linear-gradient(to bottom, rgba(3, 3, 116, 0.8), rgba(117, 125, 136, 0.8))'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(12, 125, 163, 0.5), rgba(149, 157, 168, 0.8), rgba(103, 120, 126, 0.5))' : 'linear-gradient(to bottom, rgba(21, 21, 112, 0.9), rgba(3, 3, 116, 0.8), rgba(117, 125, 136, 0.8))'
                 }
             };
         } else if(day.includes('Freezing Fog')
@@ -143,7 +143,7 @@ const getAnimations = (
                     bgClr: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(149, 157, 168, 0.8), rgba(15, 17, 17, 0.5))' : 'linear-gradient(to top, rgba(11, 11, 48, 0.8), rgba(16, 8, 90, 0.6))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(149, 157, 168, 0.8), rgba(15, 17, 17, 0.5))' : 'linear-gradient(to bottom, rgba(7, 7, 121, 0.8), rgba(16, 8, 90, 0.6))'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(12, 125, 163, 0.5), rgba(149, 157, 168, 0.8), rgba(15, 17, 17, 0.5))' : 'linear-gradient(to bottom, rgba(7, 7, 121, 0.8), rgba(16, 8, 90, 0.6), rgba(16, 8, 90, 0.6), rgba(11, 11, 48, 0.6))'
                 }
             };
         } else if(day.includes('Drizzle') 
@@ -158,7 +158,7 @@ const getAnimations = (
                     bgClr: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(50, 52, 54, 0.8), rgba(23, 23, 24, 0.9))' : 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(3, 11, 53, 1))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(123, 125, 126, 0.4), rgba(23, 23, 24, 0.9))' : 'linear-gradient(to bottom, rgba(2, 1, 26, 0.836), rgba(3, 11, 53, 1))'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(123, 125, 126, 0.4), rgba(50, 52, 54, 0.8), rgba(23, 23, 24, 0.9))' : 'linear-gradient(to bottom, rgba(2, 1, 26, 0.836), rgba(3, 11, 53, 1), rgba(0, 0, 0, 1))'
                 }
             };
         } else if(day.includes('Sky') 
@@ -173,7 +173,7 @@ const getAnimations = (
                     bgClr: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgb(17, 183, 248), rgba(16, 119, 160, 1), rgba(13, 59, 77, 1))' : 'linear-gradient(to bottom, rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgb(156, 219, 255), rgba(13, 59, 77, 1))' : 'linear-gradient(to bottom, rgb(0, 47, 255), rgba(23, 14, 104, 1))'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgb(156, 219, 255), rgb(17, 183, 248), rgb(17, 183, 248), rgba(16, 119, 160, 1), rgba(13, 59, 77, 1))' : 'linear-gradient(to bottom, rgb(0, 47, 255), rgb(42, 26, 185), rgb(42, 26, 185), rgba(23, 14, 104, 1))'
                 }
             };
         } else if(day.includes('Mist')
@@ -195,7 +195,7 @@ const getAnimations = (
                     bgClr: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(116, 125, 129, 0.8), rgba(63, 69, 71, 0.8), rgba(6, 8, 8, 0.9))' : 'linear-gradient(to top, rgba(1, 5, 20, 1), rgba(4, 13, 43, 0.9))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(90, 99, 102, 0.4), rgba(6, 8, 8, 0.9))' : 'linear-gradient(to bottom, rgba(10, 27, 77, 0.8), rgba(4, 13, 43, 0.9))'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(90, 99, 102, 0.4), rgba(116, 125, 129, 0.8), rgba(63, 69, 71, 0.8), rgba(6, 8, 8, 0.9))' : 'linear-gradient(to bottom, rgba(10, 27, 77, 0.8), rgba(4, 13, 43, 0.9), rgba(1, 5, 20, 1))'
                 }
             };
         } else if(day.includes('Thunder')) {
@@ -206,14 +206,14 @@ const getAnimations = (
                 secondSlide: {
                     icon: <Thunderstorm />,
                     background: 'thunder',
-                    bgClr: animationsObj.current.isItDay ? 'linear-gradient(to top, rgba(12, 12, 12, 1), rgba(24, 24, 26, 0.9), rgba(12, 12, 12, 1)' : 'linear-gradient(to top, rgba(12, 12, 12, 0.9), rgba(24, 24, 26, 0.8), rgba(0, 0, 0, 0.6))'
+                    bgClr: animationsObj.current.isItDay ? 'linear-gradient(to top, rgba(12, 12, 12, 1), rgba(24, 24, 26, 0.9), rgba(42, 43, 44, 0.9)' : 'linear-gradient(to top, rgba(12, 12, 12, 0.9), rgba(24, 24, 26, 0.8), rgba(0, 0, 0, 0.6))'
                 },
                 thirdSlide: {
-                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(61, 63, 65, 0.8), rgba(6, 8, 8, 0.9))' : 'linear-gradient(to bottom, rgba(1, 1, 48, 0.9), rgba(12, 12, 12, 0.9)'
+                    background: animationsObj.current.isItDay ? 'linear-gradient(to bottom, rgba(61, 63, 65, 0.8), rgba(42, 43, 44, 0.9), rgba(24, 24, 26, 0.9), rgba(6, 8, 8, 0.9))' : 'linear-gradient(to bottom, rgba(1, 1, 48, 0.9), rgba(20, 20, 68, 0.8), rgba(0, 0, 0, 0.6), rgba(24, 24, 26, 0.8), rgba(12, 12, 12, 0.9))'
                 }
             };
         };
-
+        
         setWeatherAnimations(animationsObj.current);
     };
 
@@ -396,10 +396,6 @@ const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => 
         errorPhotos.current, 
         errorVideos.current]
     );
-
-    // console.log('currentWeather:')
-    // console.log(currentWeather)
-    // console.log(selectedPlace)
 
     const findDay = (date) => {
         let temp = new Date(date);

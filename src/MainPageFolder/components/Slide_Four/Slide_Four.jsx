@@ -6,7 +6,6 @@ import { VideoCarousel } from "./Video/VideoCarousel";
 
 const SlideFour = () => {
     const { weatherAnimations } = useContext(WeatherContext);
-
     return (
         <div className={styles.slide_Four_Parent} style={{backgroundImage: `${weatherAnimations.thirdSlide.background}`}}>
             <div className={styles.slide_Four_Child}>

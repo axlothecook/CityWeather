@@ -1,70 +1,94 @@
-.raindrop_wrapper {
+.wrapper_parent {
+    /* border: 3px solid green; */
+    position: absolute;
+    top: 50%;
+    height: 20%;
+    width: 100%;
+}
+
+.wrapper_child {
     /* border: 1px solid black; */
     width: 100%;
     position: relative;
+    height: 100%;
 }
 
-.raindrop_parent {
-    animation: translateDown 2s linear infinite;
+.parent {
+    position: absolute;
     --scale-fully-cloudy: 0.8;
+    z-index: 0;
+    animation-name: rainfall, rain-drop, fade-out;
+    animation-duration: 3s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
 }
 
-.raindrop_wrapper > div:nth-of-type(1) {
-    animation: translateDown 2s linear infinite;
-    --scale-fully-cloudy: 0.8;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 3rem);
-    top: calc(var(--scale-fully-cloudy) * 1rem);
+.parent_one, .parent_two {
+    composes: parent;
+    top: -1rem;
 	left: calc(var(--scale-fully-cloudy) * 3.5rem);
-    /* border: 1px solid blue; */
 }
 
-.raindrop_wrapper > div:nth-of-type(5)  {
-    animation: translateDown 2s linear infinite;
-    --scale-fully-cloudy: 0.8;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 3rem);
-    top: calc(var(--scale-fully-cloudy) * 1rem);
-	left: calc(var(--scale-fully-cloudy) * 3.5rem);
-    /* border: 1px solid red; */
-    animation-delay: 1.7s;
-
+.parent_one {
+    animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
 }
 
-/* .raindrop_wrapper div:nth-of-type(4) {
-    animation-delay: 1s;
-} */
+.parent_two {
+    animation-delay: 1.5s, 1s;
+    animation-delay: 1.5s, 1s;
+}
 
-/* .first_raindrop_parent {
-    composes: raindrop_parent;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 3rem);
-    top: calc(var(--scale-fully-cloudy) * 1rem);
-	left: calc(var(--scale-fully-cloudy) * 3.5rem);
-} */
-
-.second_raindrop_parent {
-    composes: raindrop_parent;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 7.2rem);
-    top: calc(var(--scale-fully-cloudy) * 2rem);
+.parent_three, .parent_four {
+    composes: parent;
+    top: -2.5rem;
 	left: calc(var(--scale-fully-cloudy) * 11rem);
 }
 
-.third_raindrop_parent {
-    composes: raindrop_parent;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 1.5rem);
-    top: calc(var(--scale-fully-cloudy) * 1rem);
+.parent_three {
+    animation-duration: 2s, 2s;
+    animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
+}
+
+.parent_four {
+    animation-duration: 2s, 2s;
+    animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s;
+}
+
+.parent_five, .parent_six {
+    composes: parent;
+    top: -1rem;
 	left: calc(var(--scale-fully-cloudy) * 18rem);
 }
 
-.fourth_raindrop_parent {
-    composes: raindrop_parent;
-    position: absolute;
-    height: calc(var(--scale-fully-cloudy) * 1.5rem);
-    top: calc(var(--scale-fully-cloudy) * 1rem);
+.parent_five {
+    animation-duration: 5s, 5s;
+    animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s;
+}
+
+.parent_six {
+    animation-duration: 5s, 5s;
+    animation-delay: 2.5s, 2.5s;
+    animation-delay: 2.5s, 2.5s;
+}
+
+.parent_seven, .parent_eight {
+    composes: parent;
 	left: calc(var(--scale-fully-cloudy) * 8.5rem);
+}
+
+.parent_seven {
+    animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s;
+}
+
+.parent_eight {
+    animation-delay: 2.5s, 2.5s;
+    animation-delay: 2.5s, 2.5s;
 }
 
 .raindroplet {
@@ -77,35 +101,93 @@
 	border-radius: 0% 100% 100% 100%;
     transform: rotate(45deg);
     will-change: transform;
-    animation: fadeOut 2s linear infinite;
 }
 
-.first_raindrop {
+.raindrop_one, .raindrop_two, .raindrop_five, .raindrop_six {
     composes: raindroplet;
 }
 
-.second_raindrop {
+.raindrop_three, .raindrop_four {
     composes: raindroplet;
     height: calc(var(--scale-fully-cloudy) * 5rem);
     width: calc(var(--scale-fully-cloudy) * 5rem);
 }
 
-.third_raindrop {
-    composes: raindroplet;
-}
-
-.fourth_raindrop {
+.raindrop_seven, .raindrop_eight {
     composes: raindroplet;
     height: calc(var(--scale-fully-cloudy) * 1.5rem);
     width: calc(var(--scale-fully-cloudy) * 1.5rem);
 }
 
-@keyframes translateDown {
-	0% { transform: translatey(0%); }
-	100% { transform: translatey(70%); }
+@keyframes rainfall{
+    0% {
+        top: 0%;
+    }
+    50% {
+        top: 100%;
+    }
 }
 
-@keyframes fadeOut {
-	0% { opacity: 1; }
-	100% { opacity: 0; }
+@keyframes rain-drop{
+    0% {
+        transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(75px);
+        transform: translateY(75px);
+    }
+}
+
+@keyframes fade-out {
+	0% { 
+        opacity: 1; 
+    }
+
+	50% { 
+        opacity: 0; 
+    }
+
+    100% { 
+        opacity: 0; 
+    }
+}
+
+@media only screen and (max-width:  1098px) {
+    .wrapper_parent {
+        height: 10rem;
+        overflow: hidden;
+    }
+
+    .raindroplet {
+        height: calc(var(--scale-fully-cloudy) * 2rem);
+        width: calc(var(--scale-fully-cloudy) * 2rem);	
+    }
+
+    .raindrop_three, .raindrop_four {
+        height: calc(var(--scale-fully-cloudy) * 4rem);
+        width: calc(var(--scale-fully-cloudy) * 4rem);
+    }
+
+    .raindrop_seven, .raindrop_eight {
+        height: calc(var(--scale-fully-cloudy) * 1rem);
+        width: calc(var(--scale-fully-cloudy) * 1rem);
+    }
+
+    .parent_one, .parent_two {
+        left: calc(var(--scale-fully-cloudy) * 1.5rem);
+    }
+
+    .parent_three, .parent_four {
+        left: calc(var(--scale-fully-cloudy) * 6rem);
+    }
+
+    .parent_five, .parent_six {
+        left: calc(var(--scale-fully-cloudy) * 10.5rem);
+    }
+
+    .parent_seven, .parent_eight {
+        left: calc(var(--scale-fully-cloudy) * 4.5rem);
+    }
+
 }

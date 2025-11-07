@@ -30,8 +30,6 @@
 }
 
 .wind_bar {
-    height: calc(var(--scale-wind) * 2rem);
-    width: calc(var(--scale-wind) * 24rem);
     background: #eee;
     border-radius: 100px;
     will-change: transform;
@@ -52,14 +50,13 @@
 .top_wind_bar::before {
     content: '';
     position: absolute;
-    top: calc(var(--scale-wind) * 0rem);
+    top: 0;
     left: calc(var(--scale-wind) * 18rem);
     width: calc(var(--scale-wind) * 6rem);
     height: calc(var(--scale-wind) * 1rem);
     background: #eee;
     border-radius: 50rem;
     border-bottom-right-radius: 73rem;
-
 }
 
 .top_wind_bar_branchoff_curve::before {
@@ -84,6 +81,12 @@
     background: #eee;
     border-radius: 50rem;
     border-top-right-radius: 78rem;
+}
+
+.middle_wind_bar {
+    composes: wind_bar;
+    height: calc(var(--scale-wind) * 2rem);
+    width: calc(var(--scale-wind) * 24rem);
 }
 
 .middle_wind_bar::before {
@@ -122,7 +125,7 @@
 }
 
 .bottom_wind_bar {
-    height: calc(var(--scale-wind) * 0.7rem);
+    height: calc(var(--scale-wind) * .7rem);
     width: calc(var(--scale-wind) * 18rem);
     top: 6rem;
     left: -2rem;
@@ -131,10 +134,10 @@
 .bottom_wind_bar::before {
     content: '';
     position: absolute;
-    top: calc(var(--scale-wind) * 0rem);
+    top: 0;
     left: calc(var(--scale-wind) * 20rem);
     width: calc(var(--scale-wind) * 2.5rem);
-    height: calc(var(--scale-wind) * 0.7rem);
+    height: calc(var(--scale-wind) * .7rem);
     background: #eee;
     border-radius: 50rem;
 }
@@ -144,7 +147,7 @@
     position: absolute;
     height: calc(var(--scale-wind) * 1.3rem);
     width: calc(var(--scale-wind) * 2rem);
-    top: calc(var(--scale-wind) * 0rem);
+    top: 0;
     left: calc(var(--scale-wind) * 20rem);
     border-radius: 50%;
     z-index: 2;
@@ -157,7 +160,7 @@
     top: calc(var(--scale-wind) * 1rem);
     left: calc(var(--scale-wind) * 21.2rem);
     width: calc(var(--scale-wind) * 1.4rem);
-    height: calc(var(--scale-wind) * 0.7rem);
+    height: calc(var(--scale-wind) * .7rem);
     background: #eee;
     border-radius: 50rem;
 }
@@ -170,4 +173,109 @@
 @keyframes translateLeft {
 	0% { transform: translatex(40%); }
 	100% { transform: translatex(10%); }
+}
+
+@media only screen and (max-width:  1098px) {
+    @keyframes translateRight {
+        0% { transform: translatex(-35%); }
+        100% { transform: translatex(-5%); }
+    }
+
+    @keyframes translateLeft {
+        0% { transform: translatex(120%); }
+        100% { transform: translatex(70%); }
+    }
+
+    .wind_container {
+        gap: 2rem;
+    }
+
+    .middle_wind_bar {
+        height: calc(var(--scale-wind) * 1.5rem);
+        width: calc(var(--scale-wind) * 11rem);
+    }
+
+    .middle_wind_bar::before {
+        left: calc(var(--scale-wind) * 13rem);
+        width: calc(var(--scale-wind) * 7rem);
+        height: calc(var(--scale-wind) * 1.5rem);
+    }
+
+    .middle_wind_bar_branchoff_curve::before {
+        height: calc(var(--scale-wind) * 4rem);
+        top: calc(var(--scale-wind) * -3.3rem);
+        left: calc(var(--scale-wind) * 12rem);
+    }
+
+    .middle_wind_bar_branchoff_finisher::before {
+        top: calc(var(--scale-wind) * -3.15rem);
+        left: calc(var(--scale-wind) * 17.3rem);
+        width: calc(var(--scale-wind) * 3rem);
+        height: calc(var(--scale-wind) * 1.5rem);
+    }
+
+    .top_wind_bar {
+        height: calc(var(--scale-wind) * .6rem);
+        width: calc(var(--scale-wind) * 6rem);
+    }
+
+    .top_wind_bar::before {
+        left: calc(var(--scale-wind) * 8rem);
+        width: calc(var(--scale-wind) * 3rem);
+        height: calc(var(--scale-wind) * .6rem);
+    }
+
+    .top_wind_bar_branchoff_curve::before {
+        height: calc(var(--scale-wind) * 2rem);
+        width: calc(var(--scale-wind) * 4rem);
+        top: calc(var(--scale-wind) * -1.7rem);
+        left: calc(var(--scale-wind) * 7rem);
+        box-shadow: calc(var(--scale-wind) * 25px) 2px 0px 2px #eee; 
+    }
+
+    .top_wind_bar_branchoff_finisher::before {
+        top: calc(var(--scale-wind) * -1.7rem);
+        left: calc(var(--scale-wind) * 9.8rem);
+        width: calc(var(--scale-wind) * 1.2rem);
+        height: calc(var(--scale-wind) * .6rem);
+        border-top-right-radius: 78rem;
+    }
+
+    .bottom_wind_bar {
+        height: calc(var(--scale-wind) * .3rem);
+        width: calc(var(--scale-wind) * 10rem);
+        margin-left: 7rem;
+    }
+
+    .bottom_wind_bar::before {
+        left: calc(var(--scale-wind) * 11rem);
+        width: calc(var(--scale-wind) * 2.5rem);
+        height: calc(var(--scale-wind) * .3rem);
+    }
+
+    .bottom_wind_bar_branchoff_curve::before {
+        height: calc(var(--scale-wind) * .9rem);
+        left: calc(var(--scale-wind) * 11rem);
+    }
+
+    .bottom_wind_bar_branchoff_finisher::before {
+        top: calc(var(--scale-wind) * .85rem);
+        left: calc(var(--scale-wind) * 11.8rem);
+        width: calc(var(--scale-wind) * 1.4rem);
+        height: calc(var(--scale-wind) * .4rem);
+    }
+
+    .small_windy_cloud {
+        height: calc(var(--scale-wind) * 2rem);
+        width: calc(var(--scale-wind) * 6rem);
+        left: calc(var(--scale-wind) * (-8rem));
+    }
+
+    .small_windy_cloud::before {
+        top: calc(var(--scale-wind) * (-1rem));
+        left: calc(var(--scale-wind) * .7rem);
+        width: calc(var(--scale-wind) * 2rem);
+        height: calc(var(--scale-wind) * 2rem);
+        box-shadow: calc(var(--scale-wind) * 2rem) -.2rem 0 calc(var(--scale-wind) * .6rem) #ccc;
+    }
 }
