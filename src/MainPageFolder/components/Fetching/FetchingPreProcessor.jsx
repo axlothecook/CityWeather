@@ -1,15 +1,13 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import useWeatherData from "./FetchWeatherData";
-import { 
-    isToday, 
-    isMonday, 
-    isTuesday, 
-    isWednesday, 
-    isThursday, 
-    isFriday, 
-    isSaturday, 
-    isSunday 
-} from "date-fns";
+import isToday from '../../../../node_modules/date-fns/src/isToday/index';
+import isMonday from '../../../../node_modules/date-fns/src/isMonday/index';
+import isTuesday from '../../../../node_modules/date-fns/src/isTuesday/index';
+import isWednesday from '../../../../node_modules/date-fns/src/isWednesday/index';
+import isThursday from '../../../../node_modules/date-fns/src/isThursday/index';
+import isFriday from '../../../../node_modules/date-fns/src/isFriday/index';
+import isSaturday from '../../../../node_modules/date-fns/src/isSaturday/index';
+import isSunday from '../../../../node_modules/date-fns/src/isSunday/index';
 
 import ClearDay from '../../weatherIconsFolder/Clear_Day/ClearDay';
 import ClearNight from '../../weatherIconsFolder/Clear_Night/ClearNight';
