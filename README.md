@@ -19,7 +19,7 @@ Visual Crossing API: https://www.visualcrossing.com/weather-api/ <br />
 ## Phone scaling
 The website falls short of delivering satisfactory user experience. After dozens of attempts, its dimensions are way bigger than they should be, with white areas being accessible on vertical scroll. Another downfall is some features not working in smartphone dimensions, but they did work when being tested in Google DevTools and when browser was resized to phone dimentions. Better phone size testing tool is needed.
 
-## Possible updates
+## Upcoming updates
 ### Version 1.1 Images zoom in
 Feature: When double clicking / tapping on image, it should appear above all others in bigger dimensions, with an exit button on top right.
 
