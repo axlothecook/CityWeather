@@ -1,12 +1,13 @@
-# React + Vite
-
+# City Weather
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS Modules: https://github.com/css-modules/css-modules
+Select Component: https://react-select.com/home
+Framer library: https://www.framer.com/marketplace/components
+Chart.js: https://www.chartjs.org
+Chart.js label plug-in: https://chartjs-plugin-datalabels.netlify.app/guide
+Static weather icons: https://github.com/mrdarrengriffin/google-weather-icons
+Google Autocomplete API: https://developers.google.com/maps/documentation/places/web-service/legacy/autocomplete
+Google Places API: https://developers.google.com/maps/documentation/places/web-service/overview
+Google Youtube API: https://developers.google.com/youtube/v3/getting-started
+Visual Crossing API: https://www.visualcrossing.com/weather-api/
