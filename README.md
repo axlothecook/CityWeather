@@ -1,6 +1,9 @@
 # City Weather
 ### Weather forecasting website
 
+## Demo video
+[![duno](https://github.com/user-attachments/assets/95d3d5a0-5e72-4362-bf7b-e5c1fbc81ba2)](https://youtu.be/b0j_3zR0qlI)
+
 # Sources used
 CSS Modules: https://github.com/css-modules/css-modules <br /> 
 Select Component: https://react-select.com/home <br /> 
