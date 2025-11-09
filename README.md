@@ -1,5 +1,5 @@
 ### City Weather
-## Weather forecasting website
+# Weather forecasting website
 
 ### Sources used
 CSS Modules: https://github.com/css-modules/css-modules <br /> 
