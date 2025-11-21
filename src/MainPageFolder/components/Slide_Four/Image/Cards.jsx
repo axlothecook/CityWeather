@@ -49,7 +49,6 @@ const Card = ({ containerRef, src, alt, top, left, rotate }) => {
   const [zIndex, setZIndex] = useState(0);
 
   const updateZIndex = () => {
-    console.log('sss')
     const els = document.querySelectorAll(".drag-elements");
 
     let maxZIndex = -Infinity;
