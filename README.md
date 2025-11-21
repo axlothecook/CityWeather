@@ -1,5 +1,5 @@
 # City Weather
-### City Weather is a weather forecasting website using several api's, styling libraries and React.
+### City Weather is a weather forecasting website using several APIs, styling libraries and React JS.
 
 ## Demo video
 [![duno](./readmefiles//thumbnail.webp)](https://youtu.be/b0j_3zR0qlI)
