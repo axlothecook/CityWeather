@@ -56,7 +56,7 @@ const useImageLink = (placeId) => {
                 fetch(`https://places.googleapis.com/v1/places/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
-                        "X-Goog-Api-Key": "AIzaSyBnxOTyLUp6dwVolwpt7T_ll3yEMKWDjXo",
+                        "X-Goog-Api-Key": GOOGLE_API_KEY,
                         "X-Goog-Fieldmask": "id,displayName,photos"
                     }
                 })

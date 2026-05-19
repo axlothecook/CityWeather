@@ -30,6 +30,13 @@
 [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview) <br /> 
 [Google Youtube API](https://developers.google.com/youtube/v3/getting-started) <br /> 
 
+# Cleanup TODO (after the search-bar fix)
+
+- **Remove unused dependencies** — these are in package.json but imported in zero src files: `@googlemaps/js-api-loader`, `@react-google-maps/api`, `@vis.gl/react-google-maps` (three Google-Maps libs; only `react-google-autocomplete` is actually used), and `dotenv` (a Vite frontend doesn't need it — Vite reads `.env` natively).
+- **`date-fns` git submodule** — `.gitmodules` declares a `date-fns` submodule (a fork) but the code imports plain `date-fns` from npm (v4, named imports). The submodule is unused dead weight — remove it from `.gitmodules`.
+- **Add a `.env.example`** — the project reads `VITE_GOOGLE_MAPS_API_KEY` and `VITE_VISUAL_CROSSING_API_KEY` but has no committed template; future clones have no idea what `.env` needs.
+- **Known unfixed issues** — see "Issues not fixed" below (phone scaling).
+
 # Issues not fixed
 ## Phone scaling
 The website falls short of delivering satisfactory user experience. After dozens of attempts, its dimensions are way bigger than they should be, with white areas being accessible on vertical scroll. Another downfall is some features not working in smartphone dimensions, but they did work when being tested in Google DevTools and when browser was resized to phone dimentions. Better phone size testing tool is needed.
