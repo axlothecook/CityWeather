@@ -30,8 +30,13 @@ const SearchBar = ({ switchTab }) => {
             value={input}
             onChange={e => setInput(e.target.value)}
             onPlaceSelected={place => {
+                // Google fires this with a geometry-less place when the user presses Enter
+                // on free text (or a prediction that didn't resolve), or commits a card's
+                // pre-filled string without picking from the dropdown. Ignore those so we
+                // never try to read place.geometry.location on undefined.
+                if (!place?.geometry?.location) return;
                 onSubmit(place);
-                setInput(undefined);
+                setInput('');
             }}
             options={{
                 types: ["(cities)"]

@@ -359,7 +359,7 @@ const getAnimations = (
 const usePreProcessor = (shouldRefetch, selectedPlace, setWeatherAnimations) => {
     const latitude = useRef(null);
     const longitude = useRef(null);
-    if (selectedPlace) {
+    if (selectedPlace?.geometry?.location) {
         latitude.current = selectedPlace.geometry.location.lat();
         longitude.current = selectedPlace.geometry.location.lng();
     };
