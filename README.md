@@ -15,8 +15,8 @@ A weather forecasting website using several APIs, styling libraries and React JS
 
 ## Features
 <ul>
-  <li>search any city, with Google Autocomplete  suggesting names as the user types</li>
-  <li>weather forecast for the searched cityfrom the Visual Crossing API, shown with charts</li>
+  <li>search any city, with Google Autocomplete suggesting names as the user types</li>
+  <li>weather forecast for the searched city from the Visual Crossing API, shown with charts</li>
   <li>photo gallery of the city, pulled from Google Places</li>
   <li>tour videos of the city captured during a walk, found through the YouTube API within 30 miles of it</li>
   <li>horizontal four-slide layout with page transitions, css animations and animated weather icons</li>
