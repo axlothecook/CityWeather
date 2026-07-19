@@ -1,5 +1,5 @@
 # City Weather
-A weather forecasting website using several APIs, styling libraries and React JS.
+### A weather forecasting website using several APIs, styling libraries and React JS.
 
 ## Demo video
 [![demo video](./readmefiles//thumbnail.webp)](https://youtu.be/b0j_3zR0qlI)
